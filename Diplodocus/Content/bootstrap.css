@@ -4198,6 +4198,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   line-height: 20px;
 }
 
+.navbar-brand2 {
+    float: right;
+    font-size: 18px;
+    line-height: 20px;
+}
+
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
@@ -4209,16 +4215,20 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 
+
+.connexion {
+    padding: 15px 15px;
+}
 .navbar-toggle {
-  position: relative;
-  float: right;
-  padding: 9px 10px;
-  margin-top: 8px;
-  margin-right: 15px;
-  margin-bottom: 8px;
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 4px;
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .navbar-toggle .icon-bar {
