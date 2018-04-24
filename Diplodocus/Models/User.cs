@@ -20,7 +20,7 @@ namespace Diplodocus.Models
             this.m_address = firstName;
             this.m_phoneNumber = lastName;
         }
-
+        
         protected abstract string ToString();
 
     }

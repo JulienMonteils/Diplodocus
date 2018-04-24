@@ -20,5 +20,15 @@ namespace Diplodocus.Models
         {
             throw new NotImplementedException();
         }
+
+        protected void viewMyExam()
+        {
+
+        }
+
+        protected void markSimulation()
+        {
+
+        }
     }
 }

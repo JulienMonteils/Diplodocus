@@ -20,5 +20,19 @@ namespace Diplodocus.Models
             throw new NotImplementedException();
         }
 
+        /*protected void addMark(Matiere uneMatiere, Student unStudent)
+        {
+
+        }*/
+
+        /*protected Dictionary <Student, Notes> getMark()
+        {
+            return Dictionary <Student, Notes> lesFormations;
+        }*/
+
+        /*protected void setMark(Student unStudent)
+        {
+
+        }*/
     }
 }
