@@ -10,7 +10,6 @@ namespace Diplodocus.Models
 
         public Teacher(string firstName, string lastName, string address, string phoneNumber)
             : base("", "", "", "")
-        // appel du constructeur de la classe CompteBancaire
         // le mot-clé "base" permet d'accéder à la classe parente
         {
         }
