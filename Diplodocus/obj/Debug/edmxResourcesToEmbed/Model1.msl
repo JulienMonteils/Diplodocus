@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DDB_DIPLODOCUSModelStoreContainer" CdmEntityContainer="DDB_DIPLODOCUSEntities">
+    <EntitySetMapping Name="Examen">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.Examan">
+        <MappingFragment StoreEntitySet="Examen">
+          <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+          <ScalarProperty Name="nameExamen" ColumnName="nameExamen" />
+          <ScalarProperty Name="typeExamen" ColumnName="typeExamen" />
+          <ScalarProperty Name="markExamen" ColumnName="markExamen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolSubjects">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.SchoolSubject">
+        <MappingFragment StoreEntitySet="SchoolSubject">
+          <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+          <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolSubjectMarks">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.SchoolSubjectMark">
+        <MappingFragment StoreEntitySet="SchoolSubjectMark">
+          <ScalarProperty Name="idMark" ColumnName="idMark" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DDB_DIPLODOCUSModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

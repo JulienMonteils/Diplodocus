@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DDB_DIPLODOCUSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Examen">
+    <Key>
+      <PropertyRef Name="idExamen" />
+    </Key>
+    <Property Name="idExamen" Type="int" Nullable="false" />
+    <Property Name="nameExamen" Type="varchar" MaxLength="50" />
+    <Property Name="typeExamen" Type="varchar" MaxLength="50" />
+    <Property Name="markExamen" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="IdGrade" />
+    </Key>
+    <Property Name="IdGrade" Type="int" Nullable="false" />
+    <Property Name="gradeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolSubject">
+    <Key>
+      <PropertyRef Name="idSubject" />
+    </Key>
+    <Property Name="idSubject" Type="int" Nullable="false" />
+    <Property Name="subjectName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SchoolSubjectMark">
+    <Key>
+      <PropertyRef Name="idMark" />
+    </Key>
+    <Property Name="idMark" Type="int" Nullable="false" />
+    <Property Name="mark" Type="int" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="phoneNumber" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Manager_ToTable">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Manager">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_ToTable">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_ToTable">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DDB_DIPLODOCUSModelStoreContainer">
+    <EntitySet Name="Examen" EntityType="Self.Examen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolSubject" EntityType="Self.SchoolSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolSubjectMark" EntityType="Self.SchoolSubjectMark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Manager_ToTable" Association="Self.FK_Manager_ToTable">
+      <End Role="User" EntitySet="User" />
+      <End Role="Manager" EntitySet="Manager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_ToTable" Association="Self.FK_Student_ToTable">
+      <End Role="User" EntitySet="User" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_ToTable" Association="Self.FK_Teacher_ToTable">
+      <End Role="User" EntitySet="User" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

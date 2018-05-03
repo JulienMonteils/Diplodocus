@@ -11,11 +11,34 @@ namespace Diplodocus
 {
     using System;
     using System.Collections.Generic;
-    
     public partial class Student
     {
+        private Dictionary<Student, SchoolSubjectMark> lesFormations;
+
         public int idUser { get; set; }
-    
+
         public virtual User User { get; set; }
+
+        public Student()
+        {
+
+            lesFormations = new Dictionary<Student, SchoolSubjectMark>;
+        }
+
+        public void addMark(SchoolSubject uneMatiere, Student unStudent)
+        {
+        
+        }
+
+        public Dictionary<Student, SchoolSubjectMark> getMark()
+        {
+
+            return lesFormations;
+        }
+
+        public void setMark(Student unStudent)
+        {
+
+        }
     }
 }
