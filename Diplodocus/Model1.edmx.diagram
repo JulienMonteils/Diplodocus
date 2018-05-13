@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0ef935592a8248b0933b114bb7b191ff" Name="Diagram1">
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.Examan" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.Grade" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.Manager" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.SchoolSubject" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.SchoolSubjectMark" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.Student" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.Teacher" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDB_DIPLODOCUSModel.User" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="DDB_DIPLODOCUSModel.FK_Manager_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="DDB_DIPLODOCUSModel.FK_Student_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="DDB_DIPLODOCUSModel.FK_Teacher_ToTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
