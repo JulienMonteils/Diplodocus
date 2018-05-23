@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Diplodocus",
-    "\\Diplodocus\\Models",
-    "\\Diplodocus\\Views",
-    "\\Diplodocus\\Views\\Shared"
+    "\\Diplodocus\\Models"
   ],
-  "SelectedNode": "\\Diplodocus\\Views\\Shared",
+  "SelectedNode": "\\Diplodocus\\Models\\User.cs",
   "PreviewInSolutionExplorer": false
 }
