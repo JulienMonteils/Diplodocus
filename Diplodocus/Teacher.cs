@@ -12,10 +12,16 @@ namespace Diplodocus
     using System;
     using System.Collections.Generic;
     
-    public partial class Teacher
+    public partial class Teacher : User
     {
-        public int idUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Teacher()
+        {
+            this.schoolSubjectsList = new HashSet<SchoolSubject>();
+        }
     
-        public virtual User User { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SchoolSubject> schoolSubjectsList { get; set; }
     }
 }

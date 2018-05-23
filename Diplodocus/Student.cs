@@ -11,34 +11,20 @@ namespace Diplodocus
 {
     using System;
     using System.Collections.Generic;
-    public partial class Student
+    
+    public partial class Student : User
     {
-        private Dictionary<Student, SchoolSubjectMark> lesFormations;
-
-        public int idUser { get; set; }
-
-        public virtual User User { get; set; }
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-
-            lesFormations = new Dictionary<Student, SchoolSubjectMark>;
+            this.aStudentMarkSubject = new HashSet<StudentMarkSubject>();
         }
-
-        public void addMark(SchoolSubject uneMatiere, Student unStudent)
-        {
-        
-        }
-
-        public Dictionary<Student, SchoolSubjectMark> getMark()
-        {
-
-            return lesFormations;
-        }
-
-        public void setMark(Student unStudent)
-        {
-
-        }
+    
+        public int SchoolSubjectMarkIdMark { get; set; }
+        public int GradeIdGrade { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentMarkSubject> aStudentMarkSubject { get; set; }
+        public virtual Grade aGrade { get; set; }
     }
 }

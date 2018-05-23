@@ -19,9 +19,5 @@ namespace Diplodocus
         public string lastName { get; set; }
         public string address { get; set; }
         public string phoneNumber { get; set; }
-    
-        public virtual Manager Manager { get; set; }
-        public virtual Student Student { get; set; }
-        public virtual Teacher Teacher { get; set; }
     }
 }
