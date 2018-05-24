@@ -96,7 +96,10 @@ C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\fr\System.Web.Razor.resou
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\fr\System.Web.WebPages.resources.dll
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\fr\System.Web.WebPages.Razor.resources.dll
-C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojResolveAssemblyReference.cache
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.dll
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.pdb
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\fr\EntityFramework.resources.dll
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csproj.CopyComplete

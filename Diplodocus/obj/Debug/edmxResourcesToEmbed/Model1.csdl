@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DDB_DIPLODOCUSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Examan">
+  <EntityType Name="Examen">
     <Key>
       <PropertyRef Name="idExamen" />
     </Key>
@@ -8,6 +8,8 @@
     <Property Name="nameExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="typeExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="markExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aSchoolSubjectMark" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen" FromRole="Examen" ToRole="SchoolSubjectMark" />
+    <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Grade">
     <Key>
@@ -15,13 +17,11 @@
     </Key>
     <Property Name="IdGrade" Type="Int32" Nullable="false" />
     <Property Name="gradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="studentsList" Relationship="DDB_DIPLODOCUSModel.GradeStudent" FromRole="Grade" ToRole="Student" />
+    <NavigationProperty Name="schoolSubjectsList" Relationship="DDB_DIPLODOCUSModel.GradeSchoolSubject" FromRole="Grade" ToRole="SchoolSubject" />
   </EntityType>
-  <EntityType Name="Manager">
-    <Key>
-      <PropertyRef Name="idUser" />
-    </Key>
-    <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Manager_ToTable" FromRole="Manager" ToRole="User" />
+  <EntityType Name="Manager" BaseType="DDB_DIPLODOCUSModel.Teacher">
+    <NavigationProperty Name="gradesList" Relationship="DDB_DIPLODOCUSModel.ManagerGrade" FromRole="Manager" ToRole="Grade" />
   </EntityType>
   <EntityType Name="SchoolSubject">
     <Key>
@@ -29,27 +29,27 @@
     </Key>
     <Property Name="idSubject" Type="Int32" Nullable="false" />
     <Property Name="subjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="aStudentMarkSubjects" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectStudentMarkSubject" FromRole="SchoolSubject" ToRole="StudentMarkSubject" />
+    <NavigationProperty Name="aGrade" Relationship="DDB_DIPLODOCUSModel.GradeSchoolSubject" FromRole="SchoolSubject" ToRole="Grade" />
+    <Property Name="GradeIdGrade" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="SchoolSubjectMark">
     <Key>
-      <PropertyRef Name="idMark" />
+      <PropertyRef Name="IdMark" />
     </Key>
-    <Property Name="idMark" Type="Int32" Nullable="false" />
     <Property Name="mark" Type="Int32" />
+    <Property Name="IdMark" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="aStudentMarkSubjects" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkStudentMarkSubject" FromRole="SchoolSubjectMark" ToRole="StudentMarkSubject" />
+    <NavigationProperty Name="anExamen" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen" FromRole="SchoolSubjectMark" ToRole="Examen" />
   </EntityType>
-  <EntityType Name="Student">
-    <Key>
-      <PropertyRef Name="idUser" />
-    </Key>
-    <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Student_ToTable" FromRole="Student" ToRole="User" />
+  <EntityType Name="Student" BaseType="DDB_DIPLODOCUSModel.User">
+    <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="aStudentMarkSubject" Relationship="DDB_DIPLODOCUSModel.StudentStudentMarkSubject" FromRole="Student" ToRole="StudentMarkSubject" />
+    <NavigationProperty Name="aGrade" Relationship="DDB_DIPLODOCUSModel.GradeStudent" FromRole="Student" ToRole="Grade" />
+    <Property Name="GradeIdGrade" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Teacher">
-    <Key>
-      <PropertyRef Name="idUser" />
-    </Key>
-    <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Teacher_ToTable" FromRole="Teacher" ToRole="User" />
+  <EntityType Name="Teacher" BaseType="DDB_DIPLODOCUSModel.User">
+    <NavigationProperty Name="schoolSubjectsList" Relationship="DDB_DIPLODOCUSModel.TeacherSchoolSubject" FromRole="Teacher" ToRole="SchoolSubject" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -60,66 +60,137 @@
     <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="phoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="Manager" Relationship="Self.FK_Manager_ToTable" FromRole="User" ToRole="Manager" />
-    <NavigationProperty Name="Student" Relationship="Self.FK_Student_ToTable" FromRole="User" ToRole="Student" />
-    <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_ToTable" FromRole="User" ToRole="Teacher" />
   </EntityType>
-  <Association Name="FK_Manager_ToTable">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="idUser" />
-      </Principal>
-      <Dependent Role="Manager">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Student_ToTable">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="idUser" />
-      </Principal>
-      <Dependent Role="Student">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Teacher_ToTable">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="idUser" />
-      </Principal>
-      <Dependent Role="Teacher">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DDB_DIPLODOCUSEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Examen" EntityType="Self.Examan" />
+    <EntitySet Name="Examen1" EntityType="DDB_DIPLODOCUSModel.Examen" />
     <EntitySet Name="Grades" EntityType="Self.Grade" />
-    <EntitySet Name="Managers" EntityType="Self.Manager" />
     <EntitySet Name="SchoolSubjects" EntityType="Self.SchoolSubject" />
     <EntitySet Name="SchoolSubjectMarks" EntityType="Self.SchoolSubjectMark" />
-    <EntitySet Name="Students" EntityType="Self.Student" />
-    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
-    <EntitySet Name="Users" EntityType="Self.User" />
-    <AssociationSet Name="FK_Manager_ToTable" Association="Self.FK_Manager_ToTable">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Manager" EntitySet="Managers" />
+    <EntitySet Name="Users" EntityType="DDB_DIPLODOCUSModel.User" />
+    <EntitySet Name="StudentMarkSubjects" EntityType="DDB_DIPLODOCUSModel.StudentMarkSubject" />
+    <AssociationSet Name="StudentStudentMarkSubject" Association="DDB_DIPLODOCUSModel.StudentStudentMarkSubject">
+      <End Role="Student" EntitySet="Users" />
+      <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
     </AssociationSet>
-    <AssociationSet Name="FK_Student_ToTable" Association="Self.FK_Student_ToTable">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Student" EntitySet="Students" />
+    <AssociationSet Name="SchoolSubjectStudentMarkSubject" Association="DDB_DIPLODOCUSModel.SchoolSubjectStudentMarkSubject">
+      <End Role="SchoolSubject" EntitySet="SchoolSubjects" />
+      <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
     </AssociationSet>
-    <AssociationSet Name="FK_Teacher_ToTable" Association="Self.FK_Teacher_ToTable">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Teacher" EntitySet="Teachers" />
+    <AssociationSet Name="SchoolSubjectMarkStudentMarkSubject" Association="DDB_DIPLODOCUSModel.SchoolSubjectMarkStudentMarkSubject">
+      <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
+      <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="SchoolSubjectMarkExamen" Association="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen">
+      <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
+      <End Role="Examen" EntitySet="Examen1" />
+    </AssociationSet>
+    <AssociationSet Name="GradeStudent" Association="DDB_DIPLODOCUSModel.GradeStudent">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="Student" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="GradeSchoolSubject" Association="DDB_DIPLODOCUSModel.GradeSchoolSubject">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="SchoolSubject" EntitySet="SchoolSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="TeacherSchoolSubject" Association="DDB_DIPLODOCUSModel.TeacherSchoolSubject">
+      <End Role="Teacher" EntitySet="Users" />
+      <End Role="SchoolSubject" EntitySet="SchoolSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerGrade" Association="DDB_DIPLODOCUSModel.ManagerGrade">
+      <End Role="Manager" EntitySet="Users" />
+      <End Role="Grade" EntitySet="Grades" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="StudentMarkSubject">
+    <Key>
+      <PropertyRef Name="IdStudentMarkSubject" />
+    </Key>
+    <Property Name="IdStudentMarkSubject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="unStudent" Relationship="DDB_DIPLODOCUSModel.StudentStudentMarkSubject" FromRole="StudentMarkSubject" ToRole="Student" />
+    <Property Name="Student_idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="aSchoolSubject" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectStudentMarkSubject" FromRole="StudentMarkSubject" ToRole="SchoolSubject" />
+    <Property Name="SchoolSubject_idSubject" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="aSchoolSubjectMark" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkStudentMarkSubject" FromRole="StudentMarkSubject" ToRole="SchoolSubjectMark" />
+    <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="StudentStudentMarkSubject">
+    <End Type="DDB_DIPLODOCUSModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.StudentMarkSubject" Role="StudentMarkSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="StudentMarkSubject">
+        <PropertyRef Name="Student_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SchoolSubjectStudentMarkSubject">
+    <End Type="DDB_DIPLODOCUSModel.SchoolSubject" Role="SchoolSubject" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.StudentMarkSubject" Role="StudentMarkSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolSubject">
+        <PropertyRef Name="idSubject" />
+      </Principal>
+      <Dependent Role="StudentMarkSubject">
+        <PropertyRef Name="SchoolSubject_idSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SchoolSubjectMarkStudentMarkSubject">
+    <End Type="DDB_DIPLODOCUSModel.SchoolSubjectMark" Role="SchoolSubjectMark" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.StudentMarkSubject" Role="StudentMarkSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolSubjectMark">
+        <PropertyRef Name="IdMark" />
+      </Principal>
+      <Dependent Role="StudentMarkSubject">
+        <PropertyRef Name="SchoolSubjectMarkIdMark" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SchoolSubjectMarkExamen">
+    <End Type="DDB_DIPLODOCUSModel.SchoolSubjectMark" Role="SchoolSubjectMark" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.Examen" Role="Examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolSubjectMark">
+        <PropertyRef Name="IdMark" />
+      </Principal>
+      <Dependent Role="Examen">
+        <PropertyRef Name="SchoolSubjectMarkIdMark" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradeStudent">
+    <End Type="DDB_DIPLODOCUSModel.Grade" Role="Grade" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="IdGrade" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="GradeIdGrade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradeSchoolSubject">
+    <End Type="DDB_DIPLODOCUSModel.Grade" Role="Grade" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.SchoolSubject" Role="SchoolSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="IdGrade" />
+      </Principal>
+      <Dependent Role="SchoolSubject">
+        <PropertyRef Name="GradeIdGrade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeacherSchoolSubject">
+    <End Type="DDB_DIPLODOCUSModel.Teacher" Role="Teacher" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.SchoolSubject" Role="SchoolSubject" Multiplicity="*" />
+  </Association>
+  <Association Name="ManagerGrade">
+    <End Type="DDB_DIPLODOCUSModel.Manager" Role="Manager" Multiplicity="1" />
+    <End Type="DDB_DIPLODOCUSModel.Grade" Role="Grade" Multiplicity="*" />
+  </Association>
 </Schema>
