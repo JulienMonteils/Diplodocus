@@ -154,3 +154,4 @@ C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csproj.Co
 C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csproj.CopyComplete
 C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.dll
 C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.pdb
+C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache

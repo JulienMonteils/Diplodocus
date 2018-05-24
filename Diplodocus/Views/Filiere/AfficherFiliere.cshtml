@@ -19,7 +19,7 @@
         <input type="submit" value="Simuler" onclick="return VerifierFormulaire()" />
     </form>
     -->
-    <form name="mesMatieres" id="celuila">
+    <form name="mesMatieres" id="celuila" method="post">
       
         <h3 id="pas-ca">Semestre 1 :</h3>
         @{
@@ -42,7 +42,7 @@
         }
 
         <br />
-        <input type="submit" value="Simuler" onclick="return VerifierFormulaire()" />
+        <input type="button" value="Simuler" onclick="return VerifierFormulaire()" />
 
 
 
@@ -61,7 +61,7 @@
                     <tr>
                         <td>@matiere.LibelleMatiere</td>
                         <td>@matiere.NoteMatière</td>
-                        <td>@Model.commenterResultat(matiere.NoteMatière, matiere.NotePalier)</td>
+                        <td></td>
                     </tr>
                 }
             }
@@ -89,8 +89,6 @@
         }
         else {
             
-            
-
             /*
                 for (var j = 0; j < children.length; j++) {
                     if (children[j].className == "matiere") {
@@ -103,6 +101,19 @@
                 
             return true;
         }
+    }
+
+    function recupererNote(){
+        $("button").click(function () {
+            $.post("demo_test_post.asp",
+                {
+                    name: "Donald Duck",
+                    city: "Duckburg"
+                },
+                function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+        });
     }
 
     function VerifierChamps(id) {

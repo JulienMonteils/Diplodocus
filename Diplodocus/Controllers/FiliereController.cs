@@ -63,6 +63,21 @@ namespace Diplodocus.Controllers
         public ActionResult ResultatAnnee()
         {
             return View();
+
         }
+
+        [HttpPost]
+        public long SimulerResultatAnnee(List<long> NotesPourSimulation)
+        {
+            long resultat = 0;
+
+            foreach (long note in NotesPourSimulation)
+            {
+                resultat = resultat + note;
+            }
+            resultat = resultat / NotesPourSimulation.Count;
+            return resultat;
+        }
+
     }
 }
