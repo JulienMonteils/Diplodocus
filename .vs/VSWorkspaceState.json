@@ -2,8 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Diplodocus",
-    "\\Diplodocus\\Models"
+    "\\Diplodocus\\Controllers",
+    "\\Diplodocus\\Models",
+    "\\Diplodocus\\Views",
+    "\\Diplodocus\\Views\\Home",
+    "\\Diplodocus\\Views\\Home\\ViewStudent",
+    "\\Diplodocus\\Views\\Responsable",
+    "\\Diplodocus\\Views\\Shared",
+    "\\Diplodocus\\Views\\ViewStudent"
   ],
-  "SelectedNode": "\\Diplodocus\\Models\\User.cs",
+  "SelectedNode": "\\Diplodocus\\Views\\ViewStudent\\ViewAccueilEtudiant.cshtml",
   "PreviewInSolutionExplorer": false
 }
