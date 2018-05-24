@@ -14,7 +14,18 @@ namespace Diplodocus
     
     public partial class SchoolSubject
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SchoolSubject()
+        {
+            this.aStudentMarkSubjects = new HashSet<StudentMarkSubject>();
+        }
+    
         public int idSubject { get; set; }
         public string subjectName { get; set; }
+        public int GradeIdGrade { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentMarkSubject> aStudentMarkSubjects { get; set; }
+        public virtual Grade aGrade { get; set; }
     }
 }
