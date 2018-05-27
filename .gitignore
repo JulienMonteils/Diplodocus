@@ -1,4 +1,4 @@
 # Ignorer tous les fichiers dans /debug
-/debug
+debug/*
 # Ignorer tous les fichiers .sqlite
 *.sqlite
