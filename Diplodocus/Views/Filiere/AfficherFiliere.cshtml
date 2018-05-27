@@ -1,0 +1,151 @@
+﻿@model Diplodocus.Models.Filiere
+
+
+@{
+    ViewBag.Title = "AfficherFiliere";
+}
+
+<h2>Simulation de diplome pour : @Model.LibelleFiliere</h2>
+
+<body>
+
+    <h2>Veuillez remplir les notes pour chaque matière : </h2>
+    <!-- <form name="lesMatières" action="RemplirTableau" method="post">
+        <p>Anglais : </p><input id="anglais" type="text" onchange="return VerifierChamps(this.id)" />
+        <p>Mathematique : </p><input id="mathematique" type="text" onchange="return VerifierChamps(this.id)" />
+        <p>Français : </p><input id="français" type="text" onchange="return VerifierChamps(this.id)" />
+        <p>Histoire : </p><input id="histoire" type="text" onchange="return VerifierChamps(this.id)" />
+        <p>SVT : </p><input id="svt" type="text" onchange="return VerifierChamps(this.id)" />
+        <input type="submit" value="Simuler" onclick="return VerifierFormulaire()" />
+    </form>
+    -->
+    <form name="mesMatieres" id="celuila" method="post">
+      
+        <h3 id="pas-ca">Semestre 1 :</h3>
+        @{
+            foreach (var matiere in Model.MesMatieres)
+            {
+                if (matiere.SemestreMatiere == 1)
+                {
+                    <p>@matiere.LibelleMatiere</p><input class ="matiere" id="@matiere.LibelleMatiere" type="text" onchange="return VerifierChamps(this.id)" />
+                }
+            }
+            <h2 id="pas-ca">-------------------------------------</h2>
+            <h3 id="pas-ca">Semestre 2 :</h3 id="pas-ca">
+            foreach (var matiere in Model.MesMatieres)
+            {
+                if (matiere.SemestreMatiere == 2)
+                {
+                    <p>@matiere.LibelleMatiere</p><input class ="matiere" id="@matiere.LibelleMatiere" type="text" onchange="return VerifierChamps(this.id)" />
+                }
+            }
+        }
+
+        <br />
+        <input type="button" value="Simuler" onclick="return VerifierFormulaire()" />
+
+
+
+    </form>
+
+    <div id="TableauResultat">
+        <table id="resultats">
+            <tr>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Commentaire</th>
+            </tr>
+            @{
+                foreach (var matiere in Model.MesMatieres)
+                {
+                    <tr>
+                        <td>@matiere.LibelleMatiere</td>
+                        <td>@matiere.NoteMatière</td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</body>
+<script type="text/javascript">
+    function VerifierFormulaire() {
+        var children = document.getElementById("celuila").childNodes;
+        var verif = true;
+
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].className == "matiere") {
+                if (children[i].value == "") {
+                    verif = false;
+                }
+                else {
+                    
+                }
+            }
+        }
+        if (verif == false) {
+            alert("Veuillez saisir tous les champs !");
+            return false;
+        }
+        else {
+            
+            /*
+                for (var j = 0; j < children.length; j++) {
+                    if (children[j].className == "matiere") {
+                        var nomMatiere = children[j].id;
+                            
+                        
+                    }
+                }*/
+            
+                
+            return true;
+        }
+    }
+    /*
+    function recupererNote(){
+        $("button").click(function () {
+            $.post("demo_test_post.asp",
+                {
+                    name: "Donald Duck",
+                    city: "Duckburg"
+                },
+                function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+        });
+    }*/
+
+    function VerifierChamps(id) {
+        if (document.getElementById(id).value != "") {
+            if (isNaN(document.getElementById(id).value)) {
+                alert("Veuillez saisir une note au format numérique pour " + id);
+                document.getElementById(id).value = "";
+                return false;
+            }
+            else {
+                if (document.getElementById(id).value >= 0 && document.getElementById(id).value <= 20) {
+                    return true
+                }
+                else {
+                    alert("Veuillez saisir une note entre 0 et 20 pour " + id);
+                    document.getElementById(id).value = "";
+                    return false
+                }
+            }
+        }
+        else {
+            alert("Veuillez saisir une note pour " + id);
+            return false;
+        }
+    }
+
+
+
+</script>
+
+
+
+
+
+
