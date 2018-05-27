@@ -28,7 +28,7 @@ namespace Diplodocus
        // public virtual DbSet<Examen> Examen1 { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
         public virtual DbSet<SchoolSubject> SchoolSubjects { get; set; }
-        public virtual DbSet<SchoolSubjectMark> SchoolSubjectMarks { get; set; }
+        //public virtual DbSet<SchoolSubjectMark> SchoolSubjectMarks { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<StudentMarkSubject> StudentMarkSubjects { get; set; }
     }
