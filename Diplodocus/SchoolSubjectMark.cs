@@ -11,14 +11,14 @@ namespace Diplodocus
 {
     using System;
     using System.Collections.Generic;
-    
+    /*
     public partial class SchoolSubjectMark
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SchoolSubjectMark()
         {
             this.aStudentMarkSubjects = new HashSet<StudentMarkSubject>();
-            this.anExamen = new HashSet<Examen>();
+           // this.anExamen = new HashSet<Examen>();
         }
     
         public Nullable<int> mark { get; set; }
@@ -27,6 +27,6 @@ namespace Diplodocus
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentMarkSubject> aStudentMarkSubjects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Examen> anExamen { get; set; }
-    }
+        //public virtual ICollection<Examen> anExamen { get; set; }
+    }*/
 }

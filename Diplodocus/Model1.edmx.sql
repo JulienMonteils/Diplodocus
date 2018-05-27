@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2018 23:51:38
--- Generated from EDMX file: C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\Model1.edmx
+-- Date Created: 05/24/2018 11:48:18
+-- Generated from EDMX file: C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,43 +17,70 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_Manager_ToTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Manager] DROP CONSTRAINT [FK_Manager_ToTable];
+IF OBJECT_ID(N'[dbo].[FK_StudentStudentMarkSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StudentMarkSubjects] DROP CONSTRAINT [FK_StudentStudentMarkSubject];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Student_ToTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Student] DROP CONSTRAINT [FK_Student_ToTable];
+IF OBJECT_ID(N'[dbo].[FK_SchoolSubjectStudentMarkSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StudentMarkSubjects] DROP CONSTRAINT [FK_SchoolSubjectStudentMarkSubject];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Teacher_ToTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Teacher] DROP CONSTRAINT [FK_Teacher_ToTable];
+IF OBJECT_ID(N'[dbo].[FK_SchoolSubjectMarkStudentMarkSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StudentMarkSubjects] DROP CONSTRAINT [FK_SchoolSubjectMarkStudentMarkSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolSubjectMarkExamen]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Examen1] DROP CONSTRAINT [FK_SchoolSubjectMarkExamen];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GradeStudent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Student] DROP CONSTRAINT [FK_GradeStudent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GradeSchoolSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SchoolSubjects] DROP CONSTRAINT [FK_GradeSchoolSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TeacherSchoolSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SchoolSubjects] DROP CONSTRAINT [FK_TeacherSchoolSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ManagerGrade]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_ManagerGrade];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Teacher_inherits_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_Teacher_inherits_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Manager_inherits_Teacher]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Manager] DROP CONSTRAINT [FK_Manager_inherits_Teacher];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Student_inherits_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Student] DROP CONSTRAINT [FK_Student_inherits_User];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Examen]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Examen];
+IF OBJECT_ID(N'[dbo].[Examen1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Examen1];
 GO
-IF OBJECT_ID(N'[dbo].[Grade]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Grade];
+IF OBJECT_ID(N'[dbo].[Grades]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Grades];
 GO
-IF OBJECT_ID(N'[dbo].[Manager]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Manager];
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
 GO
-IF OBJECT_ID(N'[dbo].[SchoolSubject]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SchoolSubject];
+IF OBJECT_ID(N'[dbo].[Users_Teacher]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users_Teacher];
 GO
-IF OBJECT_ID(N'[dbo].[SchoolSubjectMark]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SchoolSubjectMark];
+IF OBJECT_ID(N'[dbo].[Users_Manager]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users_Manager];
 GO
-IF OBJECT_ID(N'[dbo].[Student]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Student];
+IF OBJECT_ID(N'[dbo].[SchoolSubjects]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SchoolSubjects];
 GO
-IF OBJECT_ID(N'[dbo].[Teacher]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Teacher];
+IF OBJECT_ID(N'[dbo].[SchoolSubjectMarks]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SchoolSubjectMarks];
 GO
-IF OBJECT_ID(N'[dbo].[User]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[User];
+IF OBJECT_ID(N'[dbo].[Users_Student]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users_Student];
+GO
+IF OBJECT_ID(N'[dbo].[StudentMarkSubjects]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[StudentMarkSubjects];
 GO
 
 -- --------------------------------------------------

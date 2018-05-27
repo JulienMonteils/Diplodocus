@@ -25,7 +25,7 @@ namespace Diplodocus
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Examen> Examen1 { get; set; }
+       // public virtual DbSet<Examen> Examen1 { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
         public virtual DbSet<SchoolSubject> SchoolSubjects { get; set; }
         public virtual DbSet<SchoolSubjectMark> SchoolSubjectMarks { get; set; }
