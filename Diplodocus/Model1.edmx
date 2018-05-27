@@ -6,7 +6,6 @@
     <edmx:StorageModels>
     <Schema Namespace="DDB_DIPLODOCUSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="DDB_DIPLODOCUSModelStoreContainer">
-    <EntitySet Name="Examen1" EntityType="DDB_DIPLODOCUSModel.Store.Examen1" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Grades" EntityType="DDB_DIPLODOCUSModel.Store.Grades" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="DDB_DIPLODOCUSModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users_Teacher" EntityType="DDB_DIPLODOCUSModel.Store.Users_Teacher" store:Type="Tables" Schema="dbo" />
@@ -26,10 +25,6 @@
     <AssociationSet Name="SchoolSubjectMarkStudentMarkSubject" Association="DDB_DIPLODOCUSModel.Store.SchoolSubjectMarkStudentMarkSubject">
       <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
       <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
-    </AssociationSet>
-    <AssociationSet Name="SchoolSubjectMarkExamen" Association="DDB_DIPLODOCUSModel.Store.SchoolSubjectMarkExamen">
-      <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
-      <End Role="Examen" EntitySet="Examen1" />
     </AssociationSet>
     <AssociationSet Name="GradeStudent" Association="DDB_DIPLODOCUSModel.Store.GradeStudent">
       <End Role="Grade" EntitySet="Grades" />
@@ -60,16 +55,6 @@
       <End Role="Student" EntitySet="Users_Student" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Examen1">
-    <Key>
-      <PropertyRef Name="idExamen" />
-    </Key>
-    <Property Name="idExamen" Type="int" Nullable="false" />
-    <Property Name="nameExamen" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="typeExamen" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="markExamen" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="SchoolSubjectMarkIdMark" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Grades">
     <Key>
       <PropertyRef Name="IdGrade" />
@@ -169,18 +154,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="SchoolSubjectMarkExamen">
-    <End Role="SchoolSubjectMark" Type="DDB_DIPLODOCUSModel.Store.SchoolSubjectMarks" Multiplicity="1" />
-    <End Role="Examen" Type="DDB_DIPLODOCUSModel.Store.Examen1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SchoolSubjectMark">
-        <PropertyRef Name="IdMark" />
-      </Principal>
-      <Dependent Role="Examen">
-        <PropertyRef Name="SchoolSubjectMarkIdMark" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="GradeStudent">
     <End Role="Grade" Type="DDB_DIPLODOCUSModel.Store.Grades" Multiplicity="1" />
     <End Role="Student" Type="DDB_DIPLODOCUSModel.Store.Users_Student" Multiplicity="*" />
@@ -275,17 +248,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DDB_DIPLODOCUSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Examen">
-          <Key>
-            <PropertyRef Name="idExamen" />
-          </Key>
-          <Property Name="idExamen" Type="Int32" Nullable="false" />
-          <Property Name="nameExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="typeExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="markExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="aSchoolSubjectMark" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen" FromRole="Examen" ToRole="SchoolSubjectMark" />
-          <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Grade">
           <Key>
             <PropertyRef Name="IdGrade" />
@@ -315,7 +277,7 @@
           <Property Name="mark" Type="Int32" />
           <Property Name="IdMark" Type="Int32" Nullable="false" />
           <NavigationProperty Name="aStudentMarkSubjects" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkStudentMarkSubject" FromRole="SchoolSubjectMark" ToRole="StudentMarkSubject" />
-          <NavigationProperty Name="anExamen" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen" FromRole="SchoolSubjectMark" ToRole="Examen" />
+          <NavigationProperty Name="anExamen" Relationship="DDB_DIPLODOCUSModel.ExamenSchoolSubjectMark" FromRole="SchoolSubjectMark" ToRole="Examen" />
         </EntityType>
         <EntityType Name="Student" BaseType="DDB_DIPLODOCUSModel.User">
           <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
@@ -337,7 +299,6 @@
           <Property Name="phoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DDB_DIPLODOCUSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Examen1" EntityType="DDB_DIPLODOCUSModel.Examen" />
           <EntitySet Name="Grades" EntityType="Self.Grade" />
           <EntitySet Name="SchoolSubjects" EntityType="Self.SchoolSubject" />
           <EntitySet Name="SchoolSubjectMarks" EntityType="Self.SchoolSubjectMark" />
@@ -355,10 +316,6 @@
             <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
             <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
           </AssociationSet>
-          <AssociationSet Name="SchoolSubjectMarkExamen" Association="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen">
-            <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
-            <End Role="Examen" EntitySet="Examen1" />
-          </AssociationSet>
           <AssociationSet Name="GradeStudent" Association="DDB_DIPLODOCUSModel.GradeStudent">
             <End Role="Grade" EntitySet="Grades" />
             <End Role="Student" EntitySet="Users" />
@@ -374,6 +331,11 @@
           <AssociationSet Name="ManagerGrade" Association="DDB_DIPLODOCUSModel.ManagerGrade">
             <End Role="Manager" EntitySet="Users" />
             <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <EntitySet Name="Examen1" EntityType="DDB_DIPLODOCUSModel.Examen" />
+          <AssociationSet Name="ExamenSchoolSubjectMark" Association="DDB_DIPLODOCUSModel.ExamenSchoolSubjectMark">
+            <End Role="Examen" EntitySet="Examen1" />
+            <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="StudentMarkSubject">
@@ -424,18 +386,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SchoolSubjectMarkExamen">
-          <End Type="DDB_DIPLODOCUSModel.SchoolSubjectMark" Role="SchoolSubjectMark" Multiplicity="1" />
-          <End Type="DDB_DIPLODOCUSModel.Examen" Role="Examen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SchoolSubjectMark">
-              <PropertyRef Name="IdMark" />
-            </Principal>
-            <Dependent Role="Examen">
-              <PropertyRef Name="SchoolSubjectMarkIdMark" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="GradeStudent">
           <End Type="DDB_DIPLODOCUSModel.Grade" Role="Grade" Multiplicity="1" />
           <End Type="DDB_DIPLODOCUSModel.Student" Role="Student" Multiplicity="*" />
@@ -468,23 +418,27 @@
           <End Type="DDB_DIPLODOCUSModel.Manager" Role="Manager" Multiplicity="1" />
           <End Type="DDB_DIPLODOCUSModel.Grade" Role="Grade" Multiplicity="*" />
         </Association>
+        <EntityType Name="Examen">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="Int32" Nullable="false" />
+          <Property Name="nameExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="typeExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="markExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="aSchoolSubjectMark" Relationship="DDB_DIPLODOCUSModel.ExamenSchoolSubjectMark" FromRole="Examen" ToRole="SchoolSubjectMark" />
+        </EntityType>
+        <Association Name="ExamenSchoolSubjectMark">
+          <End Type="DDB_DIPLODOCUSModel.Examen" Role="Examen" Multiplicity="*" />
+          <End Type="DDB_DIPLODOCUSModel.SchoolSubjectMark" Role="SchoolSubjectMark" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DDB_DIPLODOCUSModelStoreContainer" CdmEntityContainer="DDB_DIPLODOCUSEntities">
-    <EntitySetMapping Name="Examen1">
-      <EntityTypeMapping TypeName="IsTypeOf(DDB_DIPLODOCUSModel.Examen)">
-        <MappingFragment StoreEntitySet="Examen1">
-          <ScalarProperty Name="idExamen" ColumnName="idExamen" />
-          <ScalarProperty Name="nameExamen" ColumnName="nameExamen" />
-          <ScalarProperty Name="typeExamen" ColumnName="typeExamen" />
-          <ScalarProperty Name="markExamen" ColumnName="markExamen" />
-          <ScalarProperty Name="SchoolSubjectMarkIdMark" ColumnName="SchoolSubjectMarkIdMark" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Grades">
       <EntityTypeMapping TypeName="IsTypeOf(DDB_DIPLODOCUSModel.Grade)">
         <MappingFragment StoreEntitySet="Grades">
