@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DDB_DIPLODOCUSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Examen">
-    <Key>
-      <PropertyRef Name="idExamen" />
-    </Key>
-    <Property Name="idExamen" Type="Int32" Nullable="false" />
-    <Property Name="nameExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="typeExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="markExamen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="aSchoolSubjectMark" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen" FromRole="Examen" ToRole="SchoolSubjectMark" />
-    <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Grade">
     <Key>
       <PropertyRef Name="IdGrade" />
@@ -40,7 +29,6 @@
     <Property Name="mark" Type="Int32" />
     <Property Name="IdMark" Type="Int32" Nullable="false" />
     <NavigationProperty Name="aStudentMarkSubjects" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkStudentMarkSubject" FromRole="SchoolSubjectMark" ToRole="StudentMarkSubject" />
-    <NavigationProperty Name="anExamen" Relationship="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen" FromRole="SchoolSubjectMark" ToRole="Examen" />
   </EntityType>
   <EntityType Name="Student" BaseType="DDB_DIPLODOCUSModel.User">
     <Property Name="SchoolSubjectMarkIdMark" Type="Int32" Nullable="false" />
@@ -62,7 +50,6 @@
     <Property Name="phoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityContainer Name="DDB_DIPLODOCUSEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Examen1" EntityType="DDB_DIPLODOCUSModel.Examen" />
     <EntitySet Name="Grades" EntityType="Self.Grade" />
     <EntitySet Name="SchoolSubjects" EntityType="Self.SchoolSubject" />
     <EntitySet Name="SchoolSubjectMarks" EntityType="Self.SchoolSubjectMark" />
@@ -79,10 +66,6 @@
     <AssociationSet Name="SchoolSubjectMarkStudentMarkSubject" Association="DDB_DIPLODOCUSModel.SchoolSubjectMarkStudentMarkSubject">
       <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
       <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
-    </AssociationSet>
-    <AssociationSet Name="SchoolSubjectMarkExamen" Association="DDB_DIPLODOCUSModel.SchoolSubjectMarkExamen">
-      <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
-      <End Role="Examen" EntitySet="Examen1" />
     </AssociationSet>
     <AssociationSet Name="GradeStudent" Association="DDB_DIPLODOCUSModel.GradeStudent">
       <End Role="Grade" EntitySet="Grades" />
@@ -145,18 +128,6 @@
         <PropertyRef Name="IdMark" />
       </Principal>
       <Dependent Role="StudentMarkSubject">
-        <PropertyRef Name="SchoolSubjectMarkIdMark" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SchoolSubjectMarkExamen">
-    <End Type="DDB_DIPLODOCUSModel.SchoolSubjectMark" Role="SchoolSubjectMark" Multiplicity="1" />
-    <End Type="DDB_DIPLODOCUSModel.Examen" Role="Examen" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SchoolSubjectMark">
-        <PropertyRef Name="IdMark" />
-      </Principal>
-      <Dependent Role="Examen">
         <PropertyRef Name="SchoolSubjectMarkIdMark" />
       </Dependent>
     </ReferentialConstraint>

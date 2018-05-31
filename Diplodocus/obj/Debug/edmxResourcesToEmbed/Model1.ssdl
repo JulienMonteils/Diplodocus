@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DDB_DIPLODOCUSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="DDB_DIPLODOCUSModelStoreContainer">
-    <EntitySet Name="Examen1" EntityType="DDB_DIPLODOCUSModel.Store.Examen1" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Grades" EntityType="DDB_DIPLODOCUSModel.Store.Grades" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="DDB_DIPLODOCUSModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users_Teacher" EntityType="DDB_DIPLODOCUSModel.Store.Users_Teacher" store:Type="Tables" Schema="dbo" />
@@ -21,10 +20,6 @@
     <AssociationSet Name="SchoolSubjectMarkStudentMarkSubject" Association="DDB_DIPLODOCUSModel.Store.SchoolSubjectMarkStudentMarkSubject">
       <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
       <End Role="StudentMarkSubject" EntitySet="StudentMarkSubjects" />
-    </AssociationSet>
-    <AssociationSet Name="SchoolSubjectMarkExamen" Association="DDB_DIPLODOCUSModel.Store.SchoolSubjectMarkExamen">
-      <End Role="SchoolSubjectMark" EntitySet="SchoolSubjectMarks" />
-      <End Role="Examen" EntitySet="Examen1" />
     </AssociationSet>
     <AssociationSet Name="GradeStudent" Association="DDB_DIPLODOCUSModel.Store.GradeStudent">
       <End Role="Grade" EntitySet="Grades" />
@@ -55,16 +50,6 @@
       <End Role="Student" EntitySet="Users_Student" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Examen1">
-    <Key>
-      <PropertyRef Name="idExamen" />
-    </Key>
-    <Property Name="idExamen" Type="int" Nullable="false" />
-    <Property Name="nameExamen" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="typeExamen" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="markExamen" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="SchoolSubjectMarkIdMark" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Grades">
     <Key>
       <PropertyRef Name="IdGrade" />
@@ -160,18 +145,6 @@
         <PropertyRef Name="IdMark" />
       </Principal>
       <Dependent Role="StudentMarkSubject">
-        <PropertyRef Name="SchoolSubjectMarkIdMark" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SchoolSubjectMarkExamen">
-    <End Role="SchoolSubjectMark" Type="DDB_DIPLODOCUSModel.Store.SchoolSubjectMarks" Multiplicity="1" />
-    <End Role="Examen" Type="DDB_DIPLODOCUSModel.Store.Examen1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SchoolSubjectMark">
-        <PropertyRef Name="IdMark" />
-      </Principal>
-      <Dependent Role="Examen">
         <PropertyRef Name="SchoolSubjectMarkIdMark" />
       </Dependent>
     </ReferentialConstraint>

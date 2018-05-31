@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Diplodocus.Models
+﻿namespace Diplodocus.Models
 {
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
 
+    public class Teacher :User
+    {
+    
+    }
 }

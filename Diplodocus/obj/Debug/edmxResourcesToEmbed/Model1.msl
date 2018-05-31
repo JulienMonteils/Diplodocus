@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DDB_DIPLODOCUSModelStoreContainer" CdmEntityContainer="DDB_DIPLODOCUSEntities">
-    <EntitySetMapping Name="Examen1">
-      <EntityTypeMapping TypeName="IsTypeOf(DDB_DIPLODOCUSModel.Examen)">
-        <MappingFragment StoreEntitySet="Examen1">
-          <ScalarProperty Name="idExamen" ColumnName="idExamen" />
-          <ScalarProperty Name="nameExamen" ColumnName="nameExamen" />
-          <ScalarProperty Name="typeExamen" ColumnName="typeExamen" />
-          <ScalarProperty Name="markExamen" ColumnName="markExamen" />
-          <ScalarProperty Name="SchoolSubjectMarkIdMark" ColumnName="SchoolSubjectMarkIdMark" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Grades">
       <EntityTypeMapping TypeName="IsTypeOf(DDB_DIPLODOCUSModel.Grade)">
         <MappingFragment StoreEntitySet="Grades">

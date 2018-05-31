@@ -1,4 +1,8 @@
+.vs/
+*.vs/
+
 # Ignorer tous les fichiers dans /debug
 debug/*
 # Ignorer tous les fichiers .sqlite
 *.sqlite
+.vs/
