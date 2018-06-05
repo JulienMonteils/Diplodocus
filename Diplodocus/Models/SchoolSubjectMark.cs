@@ -11,8 +11,9 @@
 
         [Key]
         public int IdMark { get; set; }
-        public Nullable<int> mark { get; set; }
-        public virtual ICollection<StudentMarkSubject> aStudentMarkSubjects { get; set; }
+        public Nullable<int> Mark { get; set; }
+        public Nullable<int> MarkPalier { get; set; }
+        public virtual ICollection<StudentMarkSubject> AStudentMarkSubjects { get; set; }
     }
 
 }

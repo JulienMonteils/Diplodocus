@@ -28,7 +28,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teacher teacher = await db.Users.FindAsync(id);
+            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
             if (teacher == null)
             {
                 return HttpNotFound();
@@ -66,7 +66,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teacher teacher = await db.Users.FindAsync(id);
+            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
             if (teacher == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teacher teacher = await db.Users.FindAsync(id);
+            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
             if (teacher == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Teacher teacher = await db.Users.FindAsync(id);
+            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
             db.Users.Remove(teacher);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
