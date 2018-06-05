@@ -150,3 +150,6 @@ C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\Microsoft.AspNet.Telemetr
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations.migration1.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._3.resources

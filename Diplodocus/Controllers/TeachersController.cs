@@ -18,7 +18,7 @@ namespace Diplodocus.Controllers
         // GET: Teachers
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            return View(await db.Teachers.ToListAsync());
         }
 
         // GET: Teachers/Details/5
@@ -28,7 +28,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
+            Teacher teacher = await db.Teachers.FindAsync(id);
             if (teacher == null)
             {
                 return HttpNotFound();
@@ -47,11 +47,11 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idUser,firstName,lastName,address,phoneNumber")] Teacher teacher)
+        public async Task<ActionResult> Create([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(teacher);
+                db.Teachers.Add(teacher);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
+            Teacher teacher = await db.Teachers.FindAsync(id);
             if (teacher == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idUser,firstName,lastName,address,phoneNumber")] Teacher teacher)
+        public async Task<ActionResult> Edit([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
+            Teacher teacher = await db.Teachers.FindAsync(id);
             if (teacher == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Teacher teacher = (Teacher)await db.Users.FindAsync(id);
-            db.Users.Remove(teacher);
+            Teacher teacher = await db.Teachers.FindAsync(id);
+            db.Teachers.Remove(teacher);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

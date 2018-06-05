@@ -18,7 +18,7 @@ namespace Diplodocus.Controllers
         // GET: Managers
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            return View(await db.Managers.ToListAsync());
         }
 
         // GET: Managers/Details/5
@@ -28,7 +28,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Manager manager = (Manager)await db.Users.FindAsync(id);
+            Manager manager = await db.Managers.FindAsync(id);
             if (manager == null)
             {
                 return HttpNotFound();
@@ -47,11 +47,11 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idUser,firstName,lastName,address,phoneNumber")] Manager manager)
+        public async Task<ActionResult> Create([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber")] Manager manager)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(manager);
+                db.Managers.Add(manager);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Manager manager = (Manager)await db.Users.FindAsync(id);
+            Manager manager = await db.Managers.FindAsync(id);
             if (manager == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "idUser,firstName,lastName,address,phoneNumber")] Manager manager)
+        public async Task<ActionResult> Edit([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber")] Manager manager)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Diplodocus.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Manager manager = (Manager)await db.Users.FindAsync(id);
+            Manager manager = await db.Managers.FindAsync(id);
             if (manager == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Manager manager = (Manager)await db.Users.FindAsync(id);
-            db.Users.Remove(manager);
+            Manager manager = await db.Managers.FindAsync(id);
+            db.Managers.Remove(manager);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

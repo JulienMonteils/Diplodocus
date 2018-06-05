@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Diplodocus.Models.User>
 
 @{
-    Layout = null;
+                /**/
+
+                Layout = null;
 }
 
 <!DOCTYPE html>
@@ -18,42 +20,21 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.firstName)
+                @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.lastName)
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.address)
+                @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.phoneNumber)
+                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.phoneNumber)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idUser }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idUser }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idUser })
-            </td>
-        </tr>
-    }
-    
+
+
     </table>
 </body>
 </html>
