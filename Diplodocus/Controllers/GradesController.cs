@@ -36,6 +36,13 @@ namespace Diplodocus.Controllers
             return View(grade);
         }
 
+
+        public async Task AddschoolSubjectsListAsync(int id, SchoolSubject uneMatiere)
+        {
+            Grade grade = await db.Grades.FindAsync(id);
+            grade.schoolSubjectsList.Add(uneMatiere);
+
+        }
         // GET: Grades/Create
         public ActionResult Create()
         {
@@ -72,6 +79,17 @@ namespace Diplodocus.Controllers
                 return HttpNotFound();
             }
             return View(grade);
+        }
+
+
+        // GET: Grades/AddSubject/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddSubject([Bind(Include = "IdGrade,gradeName")] SchoolSubject subject)
+        {
+
+
+            return View(subject);
         }
 
         // POST: Grades/Edit/5

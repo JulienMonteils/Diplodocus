@@ -148,7 +148,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\IDal.cs" />
     <Compile Include="Controllers\GradesController.cs" />
+    <Compile Include="Controllers\IDalItf.cs" />
     <Compile Include="Controllers\ManagersController.cs" />
     <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
     <Compile Include="Controllers\SchoolSubjectsController.cs" />
@@ -166,6 +168,10 @@
     <Compile Include="Migrations\201806052149372_3.cs" />
     <Compile Include="Migrations\201806052149372_3.Designer.cs">
       <DependentUpon>201806052149372_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806072326473_6.cs" />
+    <Compile Include="Migrations\201806072326473_6.Designer.cs">
+      <DependentUpon>201806072326473_6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
@@ -295,6 +301,7 @@
     <Content Include="Views\Teachers\Details.cshtml" />
     <Content Include="Views\Teachers\Edit.cshtml" />
     <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Grades\AddSubject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -317,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806052149372_3.resx">
       <DependentUpon>201806052149372_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806072326473_6.resx">
+      <DependentUpon>201806072326473_6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

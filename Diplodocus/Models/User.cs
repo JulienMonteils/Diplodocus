@@ -7,6 +7,7 @@
 
     public class User
     {
+        // plus utilisé
         [Key]
         public int IdUser { get; set; }
         public string FirstName { get; set; }

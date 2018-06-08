@@ -15,27 +15,44 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <table class="table" border="1">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.gradeName)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.schoolSubjectsList)
+
+            </th>
         </tr>
-    
-    @foreach (var item in Model) {
+
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.gradeName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdGrade }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdGrade }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IdGrade })
+
+
+                @foreach (var item2 in item.schoolSubjectsList)
+                {
+
+                    @Html.DisplayFor(modelItem => item2.subjectName)<br />
+
+                }
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Add Subject", "AddSubject") |
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdGrade }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdGrade }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdGrade })
             </td>
         </tr>
-    }
-    
+        }
+
     </table>
 </body>
 </html>
