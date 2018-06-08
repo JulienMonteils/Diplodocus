@@ -18,12 +18,17 @@
     <table class="table" border="1">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.gradeName)
+                Nom des filière
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.schoolSubjectsList)
+                Matières présente dans la fillière
 
             </th>
+            <th>
+                Actions
+
+            </th>
+            
         </tr>
 
         @foreach (var item in Model)
@@ -45,10 +50,10 @@
             </td>
             <td>
 
-                @Html.ActionLink("Add Subject", "AddSubject") |
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdGrade }) |
+                @Html.ActionLink("Ajouter une matière", "AddSubject") |
+                @Html.ActionLink("Modifier", "Edit", new { id = item.IdGrade }) |
                 @Html.ActionLink("Details", "Details", new { id = item.IdGrade }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdGrade })
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.IdGrade })
             </td>
         </tr>
         }

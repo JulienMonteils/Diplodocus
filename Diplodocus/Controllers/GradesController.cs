@@ -83,13 +83,12 @@ namespace Diplodocus.Controllers
 
 
         // GET: Grades/AddSubject/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddSubject([Bind(Include = "IdGrade,gradeName")] SchoolSubject subject)
+
+        public ActionResult AddSubject()
         {
 
 
-            return View(subject);
+            return RedirectToAction("Create", "SchoolSubjects");
         }
 
         // POST: Grades/Edit/5

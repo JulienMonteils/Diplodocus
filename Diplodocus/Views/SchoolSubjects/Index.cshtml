@@ -15,33 +15,37 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
-    <table class="table">
+    <table class="table" border="1">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.aGrade.gradeName)
+                Nom de la filière
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.subjectName)
+                Les matières
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.aGrade.gradeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.subjectName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdSubject }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdSubject }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IdSubject })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aGrade.gradeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subjectName)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.IdSubject }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdSubject }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdSubject })
+                </td>
+            </tr>
+        }
+
     </table>
+
+    @Html.ActionLink("Fillieres", "ReturnToGrades") |
 </body>
 </html>

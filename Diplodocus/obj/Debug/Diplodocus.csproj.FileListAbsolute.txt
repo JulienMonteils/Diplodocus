@@ -153,5 +153,5 @@ C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\bin\System.Diagnostics.Diagno
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations.migration1.resources
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._3.resources
-C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._6.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache
