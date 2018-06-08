@@ -1,0 +1,35 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Manager menu</title>
+</head>
+<body>
+    <p>
+        Vous etes Manager
+
+        <br />
+        Action :
+
+        <br />
+        @Html.ActionLink("Gérer les filères", "ManageGradeRedirect")
+        <br />
+        @Html.ActionLink("Gérer les matières", "ManageSubjectRedirect")
+        <br />
+        @Html.ActionLink("Gérer les étudiants", "ManageStudentRedirect")
+
+
+
+
+    </p>
+
+</body>
+</html>
+
