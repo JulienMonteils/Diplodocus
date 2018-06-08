@@ -18,7 +18,6 @@ namespace Diplodocus.Models
         public System.Data.Entity.DbSet<Diplodocus.Models.SchoolSubject> SchoolSubjects { get; set; }
         public System.Data.Entity.DbSet<Diplodocus.Models.SchoolSubjectMark> SchoolSubjectMarks { get; set; }
         public System.Data.Entity.DbSet<Diplodocus.Models.Student> Students { get; set; }
-        public System.Data.Entity.DbSet<Diplodocus.Models.StudentMarkSubject> StudentMarkSubjects { get; set; }
         public System.Data.Entity.DbSet<Diplodocus.Models.Teacher> Teachers { get; set; }
         public System.Data.Entity.DbSet<Diplodocus.Models.User> Users { get; set; }
     }

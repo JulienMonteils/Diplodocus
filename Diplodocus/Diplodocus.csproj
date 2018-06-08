@@ -154,7 +154,6 @@
     <Compile Include="Controllers\ManagersController.cs" />
     <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
     <Compile Include="Controllers\SchoolSubjectsController.cs" />
-    <Compile Include="Controllers\StudentMarkSubjectsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -173,6 +172,10 @@
     <Compile Include="Migrations\201806072326473_6.Designer.cs">
       <DependentUpon>201806072326473_6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806081338355_8.cs" />
+    <Compile Include="Migrations\201806081338355_8.Designer.cs">
+      <DependentUpon>201806081338355_8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -180,7 +183,6 @@
     <Compile Include="Models\SchoolSubject.cs" />
     <Compile Include="Models\SchoolSubjectMark.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentMarkSubject.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -281,11 +283,6 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\StudentMarkSubjects\Create.cshtml" />
-    <Content Include="Views\StudentMarkSubjects\Delete.cshtml" />
-    <Content Include="Views\StudentMarkSubjects\Details.cshtml" />
-    <Content Include="Views\StudentMarkSubjects\Edit.cshtml" />
-    <Content Include="Views\StudentMarkSubjects\Index.cshtml" />
     <Content Include="Views\Managers\Create.cshtml" />
     <Content Include="Views\Managers\Delete.cshtml" />
     <Content Include="Views\Managers\Details.cshtml" />
@@ -327,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806072326473_6.resx">
       <DependentUpon>201806072326473_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806081338355_8.resx">
+      <DependentUpon>201806081338355_8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

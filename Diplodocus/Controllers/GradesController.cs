@@ -40,7 +40,7 @@ namespace Diplodocus.Controllers
         public async Task AddschoolSubjectsListAsync(int id, SchoolSubject uneMatiere)
         {
             Grade grade = await db.Grades.FindAsync(id);
-            grade.schoolSubjectsList.Add(uneMatiere);
+            grade.SchoolSubjectsList.Add(uneMatiere);
 
         }
         // GET: Grades/Create

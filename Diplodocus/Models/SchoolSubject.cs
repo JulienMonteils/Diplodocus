@@ -11,9 +11,13 @@
         [Key]
         public int IdSubject { get; set; }
         [Required]
-        public string subjectName { get; set; }
+        public string SubjectName { get; set; }
+        public long SubjectMarkFloor { get; set; }
+        public int Semester { get; set; }
+        public bool Rattrapable { get; set; }
         public int GradeIdGrade { get; set; }
-        public virtual ICollection<StudentMarkSubject> aStudentMarkSubjects { get; set; }
-        public virtual Grade aGrade { get; set; }
+
+        public virtual ICollection<SchoolSubjectMark> SchoolSubjectMark { get; set; }
+        public virtual Grade Grade { get; set; }
     }
 }

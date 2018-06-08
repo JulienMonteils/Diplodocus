@@ -11,7 +11,8 @@
         [Key]
         public int IdGrade { get; set; }
         public string gradeName { get; set; }
-        public virtual ICollection<Student> studentsList { get; set; }
-        public virtual ICollection<SchoolSubject> schoolSubjectsList { get; set; }
+        public virtual ICollection<Student> StudentsList { get; set; }
+        public virtual ICollection<SchoolSubject> SchoolSubjectsList { get; set; }
+        public Manager Manager { get; set; }
     }
 }

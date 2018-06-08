@@ -18,7 +18,7 @@ namespace Diplodocus.Controllers
         // GET: SchoolSubjects
         public async Task<ActionResult> Index()
         {
-            var schoolSubjects = db.SchoolSubjects.Include(s => s.aGrade);
+            var schoolSubjects = db.SchoolSubjects.Include(s => s.Grade);
             return View(await schoolSubjects.ToListAsync());
         }
 
