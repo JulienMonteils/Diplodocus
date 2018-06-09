@@ -15,24 +15,15 @@
     <div>
         <h4>SchoolSubject</h4>
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.aGrade.gradeName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.aGrade.gradeName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.subjectName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.subjectName)
-            </dd>
-    
-        </dl>
+        <br />
+
+        Nom de la filière: @Html.DisplayFor(model => model.Grade.gradeName)
+        <br />
+
+
+        Nom de la matière: @Html.DisplayFor(model => model.SubjectName)
+
+        <br />
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.IdSubject }) |

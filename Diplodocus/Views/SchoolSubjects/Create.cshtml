@@ -12,30 +12,57 @@
     <title>Create</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
-            <h4>SchoolSubject</h4>
+            <h4>Ajout de matière</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                Nom de la matière
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.SubjectName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
-                @Html.LabelFor(model => model.GradeIdGrade, "GradeIdGrade", htmlAttributes: new { @class = "control-label col-md-2" })
+                Seuil de validation
                 <div class="col-md-10">
-                    @Html.DropDownList("GradeIdGrade", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.GradeIdGrade, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.SubjectMarkFloor, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SubjectMarkFloor, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
+
+            <div class="form-group">
+                Semestre
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Semester, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Semester, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <br />
+                Matière rattrapable
+
+                @Html.EditorFor(model => model.Rattrapable, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rattrapable, "", new { @class = "text-danger" })
+
+            </div>
+            <br />
+
+            <div class="form-group">
+                Ajouter dans la filière
+                @Html.DropDownList("GradeIdGrade", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GradeIdGrade, "", new { @class = "text-danger" })
+
+            </div>
+            <br />
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
@@ -43,9 +70,9 @@
             </div>
         </div>
     }
-    
+    <br />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Afficher toutes les matières créer", "Index")
     </div>
 </body>
 </html>
