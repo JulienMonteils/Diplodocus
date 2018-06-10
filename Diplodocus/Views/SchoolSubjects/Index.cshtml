@@ -21,7 +21,19 @@
                 Nom de la filière
             </th>
             <th>
-                Les matières
+                Nom de la matière
+            </th>
+
+
+
+            <th>
+                Seuil
+            </th>
+            <th>
+                Semestre
+            </th>
+            <th>
+                Rattrapable
             </th>
             <th>Actions</th>
         </tr>
@@ -36,16 +48,24 @@
                     @Html.DisplayFor(modelItem => item.SubjectName)
                 </td>
                 <td>
-
-                    @Html.ActionLink("Modifier", "Edit", new { id = item.IdSubject }) |
+                    @Html.DisplayFor(modelItem => item.SubjectMarkFloor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rattrapable)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdSubject }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IdSubject }) |
-                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdSubject })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdSubject })
                 </td>
             </tr>
         }
 
     </table>
-
+    <br />
     @Html.ActionLink("Fillieres", "ReturnToGrades") |
 </body>
 </html>

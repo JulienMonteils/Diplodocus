@@ -54,7 +54,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdGrade,gradeName")] Grade grade)
+        public async Task<ActionResult> Create([Bind(Include = "IdGrade,gradeName,Manager")] Grade grade)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdGrade,gradeName")] Grade grade)
+        public async Task<ActionResult> Edit([Bind(Include = "IdGrade,gradeName,Manager")] Grade grade)
         {
             if (ModelState.IsValid)
             {

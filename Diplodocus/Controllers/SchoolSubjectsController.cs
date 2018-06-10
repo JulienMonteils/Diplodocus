@@ -44,21 +44,12 @@ namespace Diplodocus.Controllers
             return View();
         }
 
-
-        public ActionResult ReturnToGrades()
-        {
-
-
-            return RedirectToAction("Index", "Grades");
-        }
-
-
         // POST: SchoolSubjects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdSubject,subjectName,GradeIdGrade")] SchoolSubject schoolSubject)
+        public async Task<ActionResult> Create([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade")] SchoolSubject schoolSubject)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +83,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSubject,subjectName,GradeIdGrade")] SchoolSubject schoolSubject)
+        public async Task<ActionResult> Edit([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade")] SchoolSubject schoolSubject)
         {
             if (ModelState.IsValid)
             {
@@ -129,6 +120,15 @@ namespace Diplodocus.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult ReturnToGrades()
+        {
+
+
+            return RedirectToAction("Index", "Grades");
+        }
+
 
         protected override void Dispose(bool disposing)
         {
