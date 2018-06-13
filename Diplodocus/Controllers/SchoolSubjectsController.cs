@@ -49,7 +49,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade")] SchoolSubject schoolSubject)
+        public async Task<ActionResult> Create([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade,Coef")] SchoolSubject schoolSubject)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade")] SchoolSubject schoolSubject)
+        public async Task<ActionResult> Edit([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade,Coef")] SchoolSubject schoolSubject)
         {
             if (ModelState.IsValid)
             {

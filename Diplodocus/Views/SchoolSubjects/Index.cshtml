@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Les Matières</title>
 </head>
 <body>
     <p>
@@ -35,6 +35,9 @@
             <th>
                 Rattrapable
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coef)
+            </th>
             <th>Actions</th>
         </tr>
 
@@ -57,6 +60,9 @@
                     @Html.DisplayFor(modelItem => item.Rattrapable)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Coef)
+                </td>
+                <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.IdSubject }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IdSubject }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.IdSubject })
@@ -65,6 +71,7 @@
         }
 
     </table>
+
     <br />
     @Html.ActionLink("Fillieres", "ReturnToGrades") |
 </body>

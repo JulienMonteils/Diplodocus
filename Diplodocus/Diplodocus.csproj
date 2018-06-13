@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201806081338355_8.Designer.cs">
       <DependentUpon>201806081338355_8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806131922240_10.cs" />
+    <Compile Include="Migrations\201806131922240_10.Designer.cs">
+      <DependentUpon>201806131922240_10.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -330,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806081338355_8.resx">
       <DependentUpon>201806081338355_8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131922240_10.resx">
+      <DependentUpon>201806131922240_10.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

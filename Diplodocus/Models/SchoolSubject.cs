@@ -16,7 +16,7 @@
         public int Semester { get; set; }
         public bool Rattrapable { get; set; }
         public int GradeIdGrade { get; set; }
-
+        public int Coef { get; set; }
         public virtual ICollection<SchoolSubjectMark> SchoolSubjectMark { get; set; }
         public virtual Grade Grade { get; set; }
     }
