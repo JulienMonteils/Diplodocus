@@ -12,7 +12,9 @@
     <title>Index</title>
 </head>
 <body>
-
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
     <table class="table">
         <tr>
             <th>
@@ -27,37 +29,43 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GradeIdGrade)
+            </th>
             <th></th>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AddressMail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUser }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdUser }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUser })
-                </td>
-            </tr>
-        }
-
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeIdGrade)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdUser }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdUser }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdUser })
+            </td>
+        </tr>
+    }
+    
     </table>
-
-
-    <p>
-        @Html.ActionLink("Créer un nouvelle etudiant", "Create")
-    </p>
 </body>
 </html>
