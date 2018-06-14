@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
+    <Compile Include="Controllers\SimulationsController.cs" />
     <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Controllers\IDal.cs" />
     <Compile Include="Controllers\GradesController.cs" />
@@ -209,6 +210,14 @@
     <Compile Include="Migrations\201806141317417_18.Designer.cs">
       <DependentUpon>201806141317417_18.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806141706341_19.cs" />
+    <Compile Include="Migrations\201806141706341_19.Designer.cs">
+      <DependentUpon>201806141706341_19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141719164_20.cs" />
+    <Compile Include="Migrations\201806141719164_20.Designer.cs">
+      <DependentUpon>201806141719164_20.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -219,6 +228,8 @@
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\SimulationFormViewModel.cs" />
+    <Compile Include="ViewModels\SimulationResultViewModel.cs" />
     <Compile Include="ViewModels\User.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +338,10 @@
     <Content Include="Views\Users\Autherize.cshtml" />
     <Content Include="Views\Start\StudentStart.cshtml" />
     <Content Include="Views\Shared\LoginLayout.cshtml" />
+    <Content Include="Views\Simulations\Index.cshtml" />
+    <Content Include="Views\Simulations\IndexRattrapage.cshtml" />
+    <Content Include="Views\Simulations\ResultatRattrapage.cshtml" />
+    <Content Include="Views\Simulations\ResultatSimulation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,6 +394,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806141317417_18.resx">
       <DependentUpon>201806141317417_18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141706341_19.resx">
+      <DependentUpon>201806141706341_19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141719164_20.resx">
+      <DependentUpon>201806141719164_20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,6 @@
         <br />
         UserType => @Session["UserType"]
     </p>
-
+    @Html.ActionLink("Simuler vos notes", "Index", "Simulations", new { id = Session["UserId"] }, new { @class = "btn btn-primary" })
 </body>
 </html>

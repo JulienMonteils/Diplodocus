@@ -1,0 +1,99 @@
+﻿@model Diplodocus.ViewModels.SimulationFormViewModel
+@using Diplodocus.Models
+@using Diplodocus.ViewModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <br />
+    <br />
+    <h2>Rattrapage pour fillière : @Model.Grade.gradeName</h2>
+
+
+    <!-- à mettre dans textboxfor :  m.SchoolSubjectMarks.ElementAt(1).Mark-->
+    @using (Html.BeginForm("ResultatRattrapage", "Simulations"))
+    {
+        
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "Please fix the following errors.")
+            @{
+                <h2>Semestre 1</h2>
+                var i = 0;
+                foreach (var subject in Model.SchoolSubjects)
+                {
+                    if (subject.Semester == 1)
+                    {
+                        if (Model.Notes[i] < 10)
+                        {
+                            <div class="form-group">
+                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(m => m.Notes[i], new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.Notes[i])
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(m => m.Notes[i], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(m => m.Notes[i])
+                                </div>
+                            </div>
+                        }
+                    }
+                    i = i + 1;
+                }
+                <h2>Semestre 2</h2>
+                var j = 0;
+                foreach (var subject in Model.SchoolSubjects)
+                {
+
+                    if (subject.Semester == 2)
+                    {
+                        if (Model.Notes[j] < 10)
+                        {
+                        <div class="form-group">
+                            @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-3">
+                                @Html.EditorFor(m => m.Notes[j], new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(m => m.Notes[j])
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(m => m.Notes[j], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(m => m.Notes[j])
+                                    </div>
+                                </div>
+                        }
+                    }
+                    j = j + 1;
+                }
+            }
+            @Html.HiddenFor(m => m.Grade.IdGrade)
+            @Html.HiddenFor(m => m.Student.IdUser)
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary">Lancer la simulation</button>
+                </div>
+            </div>
+        </div>
+    }
+    </body>
+</html>
