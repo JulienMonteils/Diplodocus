@@ -12,13 +12,14 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Inscription", "Index", "ViewResponsable/ViewAccueilResponsable", new { area = "" }, new { @class = "navbar-brand" })
-
+           
 
                 <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("Espace responsable", "Index", "Start/ManagerStart", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", new { area = "" }, new { @class = "navbar-brand2" })</li>
-                    <li>@Html.ActionLink("Espace responsable","caca", "ViewResponsable/ViewAccueilResponsable", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Test", "ViewAccueilResponsable", "ViewResponsable")</li>
+                    <li>@Html.ActionLink("Déconnexion", "Déconnexion", "Déconnexion")</li>
+
                 </ul>
             </div>
         </div>

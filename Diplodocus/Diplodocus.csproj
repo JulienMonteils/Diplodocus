@@ -148,12 +148,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
     <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Controllers\IDal.cs" />
     <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\IDalItf.cs" />
     <Compile Include="Controllers\ManagersController.cs" />
-    <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
     <Compile Include="Controllers\SchoolSubjectsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
@@ -193,6 +193,18 @@
     <Compile Include="Migrations\201806132226524_13.Designer.cs">
       <DependentUpon>201806132226524_13.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806140703104_14.cs" />
+    <Compile Include="Migrations\201806140703104_14.Designer.cs">
+      <DependentUpon>201806140703104_14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140711425_15.cs" />
+    <Compile Include="Migrations\201806140711425_15.Designer.cs">
+      <DependentUpon>201806140711425_15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140718575_16.cs" />
+    <Compile Include="Migrations\201806140718575_16.Designer.cs">
+      <DependentUpon>201806140718575_16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -209,15 +221,10 @@
     <Content Include="App_Data\DDB_DIPLODOCUS_log.ldf">
       <DependentUpon>DDB_DIPLODOCUS.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-def.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -229,12 +236,6 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -305,11 +306,6 @@
     <Content Include="Views\Managers\Details.cshtml" />
     <Content Include="Views\Managers\Edit.cshtml" />
     <Content Include="Views\Managers\Index.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
-    <Content Include="Views\Students\Delete.cshtml" />
-    <Content Include="Views\Students\Details.cshtml" />
-    <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\Teachers\Create.cshtml" />
     <Content Include="Views\Teachers\Delete.cshtml" />
     <Content Include="Views\Teachers\Details.cshtml" />
@@ -318,6 +314,11 @@
     <Content Include="Views\Grades\AddSubject.cshtml" />
     <Content Include="Views\Start\Index.cshtml" />
     <Content Include="Views\Start\ManagerStart.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -358,6 +359,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806132226524_13.resx">
       <DependentUpon>201806132226524_13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140703104_14.resx">
+      <DependentUpon>201806140703104_14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140711425_15.resx">
+      <DependentUpon>201806140711425_15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140718575_16.resx">
+      <DependentUpon>201806140718575_16.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

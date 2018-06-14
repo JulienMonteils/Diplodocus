@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Diplodocus.Models.SchoolSubjectMark>
 
 @{
-    Layout = null;
+  
 }
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.mark)
+                @Html.DisplayNameFor(model => model.Mark)
             </th>
             <th></th>
         </tr>
@@ -26,7 +26,7 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.mark)
+                @Html.DisplayFor(modelItem => item.Mark)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.IdMark }) |

@@ -110,3 +110,7 @@ C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.dll
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.pdb
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._12.resources
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._13.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._14.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._15.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._16.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache
