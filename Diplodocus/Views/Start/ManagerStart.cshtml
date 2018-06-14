@@ -1,7 +1,9 @@
-﻿
-
-@{
-   
+﻿@{
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["ManagerId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
 }
 
 <!DOCTYPE html>
@@ -13,9 +15,20 @@
 </head>
 <body>
     <p>
-        Vous etes Manager
-
+        Vous etes Manager :
+        <br /><br />
+        ManagerId => @Session["UserId"]
         <br />
+        ManagerFirstName => @Session["ManagerFirstName"]
+        <br />
+        ManagerLastName => @Session["ManagerLastName"]
+        <br />
+        ManagerPhoneNumber => @Session["ManagerPhoneNumber"]
+        <br />
+        ManagerAddressEmail => @Session["ManagerAddressEmail"]
+        <br />
+        ManagerAddressEmail => @Session["UserType"]
+        <br /><br />
         Action :
 
         <br />
@@ -32,4 +45,3 @@
 
 </body>
 </html>
-

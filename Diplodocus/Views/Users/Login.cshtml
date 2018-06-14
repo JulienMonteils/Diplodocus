@@ -1,0 +1,101 @@
+﻿@model Diplodocus.ViewModels.User
+@{
+    ViewBag.Title = "Diplodocus";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viwport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        #login-div {
+            position: absolute;
+            left: 38%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 30px 30px 30px 30px;
+            border-radius: 5px;
+        }
+        /*#green-button{
+            background-color:forestgreen;
+            color:white;
+        }*/
+        h1 {
+            max-width: 30%;
+            position: absolute;
+            left: 38%;
+            top: 10%;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            padding: 30px 80px 30px 80px;
+            border-radius: 5px;
+            text-align: left;
+        }
+        /*input{
+            border-radius:5px;
+        }*/
+    </style>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1 style="">Diplodocus</h1>
+    <div id="login-div">
+        @using (Html.BeginForm("Autherize", "Users", FormMethod.Post))
+        {
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-2">
+                    <label class="label-danger">@ViewBag.SuccesMessage</label>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                  
+                    <td>@Html.LabelFor(model => model.Email)</td>
+                    <td>@Html.EditorFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <td><br /></td>
+                    <td>@Html.ValidationMessageFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password)</td>
+                    <td>@Html.EditorFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <br />
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left:32%">
+                        <br />
+                        <input type="submit" name="name" value="Se connecter" id="green-button" /><br /><br />
+                        @Html.ActionLink("Inscription", "Inscription")
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

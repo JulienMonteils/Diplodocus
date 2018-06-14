@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
+    <Compile Include="Controllers\SimulationsController.cs" />
     <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Controllers\IDal.cs" />
     <Compile Include="Controllers\GradesController.cs" />
@@ -201,9 +202,21 @@
     <Compile Include="Migrations\201806140711425_15.Designer.cs">
       <DependentUpon>201806140711425_15.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806140718575_16.cs" />
-    <Compile Include="Migrations\201806140718575_16.Designer.cs">
-      <DependentUpon>201806140718575_16.cs</DependentUpon>
+    <Compile Include="Migrations\201806141317116_17.cs" />
+    <Compile Include="Migrations\201806141317116_17.Designer.cs">
+      <DependentUpon>201806141317116_17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141317417_18.cs" />
+    <Compile Include="Migrations\201806141317417_18.Designer.cs">
+      <DependentUpon>201806141317417_18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141706341_19.cs" />
+    <Compile Include="Migrations\201806141706341_19.Designer.cs">
+      <DependentUpon>201806141706341_19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141719164_20.cs" />
+    <Compile Include="Migrations\201806141719164_20.Designer.cs">
+      <DependentUpon>201806141719164_20.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
@@ -215,6 +228,9 @@
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\SimulationFormViewModel.cs" />
+    <Compile Include="ViewModels\SimulationResultViewModel.cs" />
+    <Compile Include="ViewModels\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DDB_DIPLODOCUS.mdf" />
@@ -296,11 +312,6 @@
     <Content Include="Views\SchoolSubjectMarks\Details.cshtml" />
     <Content Include="Views\SchoolSubjectMarks\Edit.cshtml" />
     <Content Include="Views\SchoolSubjectMarks\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Managers\Create.cshtml" />
     <Content Include="Views\Managers\Delete.cshtml" />
     <Content Include="Views\Managers\Details.cshtml" />
@@ -319,6 +330,18 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\Inscription.cshtml" />
+    <Content Include="Views\Users\GestionStudent.cshtml" />
+    <Content Include="Views\Users\GestionManager.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Autherize.cshtml" />
+    <Content Include="Views\Start\StudentStart.cshtml" />
+    <Content Include="Views\Shared\LoginLayout.cshtml" />
+    <Content Include="Views\Simulations\Index.cshtml" />
+    <Content Include="Views\Simulations\IndexRattrapage.cshtml" />
+    <Content Include="Views\Simulations\ResultatRattrapage.cshtml" />
+    <Content Include="Views\Simulations\ResultatSimulation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -366,8 +389,17 @@
     <EmbeddedResource Include="Migrations\201806140711425_15.resx">
       <DependentUpon>201806140711425_15.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806140718575_16.resx">
-      <DependentUpon>201806140718575_16.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806141317116_17.resx">
+      <DependentUpon>201806141317116_17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141317417_18.resx">
+      <DependentUpon>201806141317417_18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141706341_19.resx">
+      <DependentUpon>201806141706341_19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141719164_20.resx">
+      <DependentUpon>201806141719164_20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

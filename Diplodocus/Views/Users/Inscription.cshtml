@@ -1,0 +1,102 @@
+﻿@model Diplodocus.ViewModels.User
+
+@{
+    ViewBag.Title = "Page d'inscription";
+    Layout = null;
+}
+
+<h2>Page d'inscription</h2>
+
+@using (Html.BeginForm("AddStudent", "Students", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @ViewBag.AlreadyExist
+
+    <hr />
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { @class = "control-label col-md-2"/*, placeholder = "Email", required = "required" */})
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName, new { @class = "control-label col-md-2"/*, placeholder = "Prénom", required = "required" */})
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LastName, new { @class = "control-label col-md-2"/*, placeholder = "Nom", required = "required" */})
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhoneNumber, new { @class = "control-label col-md-2"/*, placeholder = "Numéro de téléphone", required = "required" */})
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { @class = "control-label col-md-2" })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2", placeholder = "Email", required = "required" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GradeIdGrade, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GradeIdGrade, new { @class = "control-label col-md-2", placeholder = "Email", required = "required" })
+            @Html.ValidationMessageFor(model => model.GradeIdGrade)
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Inscription" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <label class="label-success">@ViewBag.SuccesMessage</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <label class="label-danger">@ViewBag.DuplicateMessage</label>
+        </div>
+    </div>
+
+</div>
+}
+
+@Html.ActionLink("Retour à la page de login", "Login")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
