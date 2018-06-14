@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["StudentId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Student menu</title>
+</head>
+<body>
+    <p>
+        Vous etes Etudiant :
+        <br />
+        StudentId => @Session["UserId"]
+        <br />
+        StudentFirstName => @Session["StudentFirstName"]
+        <br />
+        StudentLastName => @Session["StudentLastName"]
+        <br />
+        StudentPhoneNumber => @Session["StudentPhoneNumber"]
+        <br />
+        StudentAddressEmail => @Session["StudentAddressEmail"]
+        <br />
+        UserType => @Session["UserType"]
+    </p>
+
+</body>
+</html>

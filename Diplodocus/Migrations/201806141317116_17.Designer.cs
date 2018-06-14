@@ -7,13 +7,13 @@ namespace Diplodocus.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class _16 : IMigrationMetadata
+    public sealed partial class _17 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_16));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_17));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806140718575_16"; }
+            get { return "201806141317116_17"; }
         }
         
         string IMigrationMetadata.Source

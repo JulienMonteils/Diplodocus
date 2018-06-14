@@ -90,6 +90,43 @@ namespace Diplodocus.Controllers
             return View(student);
         }
 
+
+        [HttpGet]
+        public ActionResult AddStudent(int id = 0)
+        {
+            User userModel = new User();
+            return View(userModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddStudent(Diplodocus.ViewModels.User userModel)
+        {
+            using (MyContext db = new MyContext())
+            {
+                if (db.Students.Any(x => x.AddressMail == userModel.Email))
+                {
+                    ViewBag.AlreadyExist = "Compte déjà existant avec cet Email";
+                    // ADD ICI UN MESSAGE POUR SIGNALER QUE LE COMPTE EXISTE DEJA
+                    return RedirectToAction("Inscription", "Users");
+                }
+                Student student = new Student
+                {
+                    AddressMail = userModel.Email,
+                    FirstName = userModel.FirstName,
+                    LastName = userModel.LastName,
+                    PhoneNumber = userModel.PhoneNumber,
+                    Password = userModel.Password,
+                    GradeIdGrade = userModel.GradeIdGrade
+                };
+                db.Students.Add(student);
+                db.SaveChanges();
+                ModelState.Clear();
+                ViewBag.SuccesMessage = "Inscription réussie";
+                return RedirectToAction("Login", "Users");
+            }
+        }
+
+
         // GET: Students/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
