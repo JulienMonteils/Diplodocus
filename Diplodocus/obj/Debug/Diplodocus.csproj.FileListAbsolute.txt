@@ -112,8 +112,6 @@ C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migratio
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._13.resources
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._14.resources
 C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._15.resources
-C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._16.resources
-C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache
 C:\Users\PRUVOSTV\Desktop\PROJET\Diplodocus3\Diplodocus\bin\ApplicationInsights.config
 C:\Users\PRUVOSTV\Desktop\PROJET\Diplodocus3\Diplodocus\bin\Diplodocus.dll.config
 C:\Users\PRUVOSTV\Desktop\PROJET\Diplodocus3\Diplodocus\bin\Diplodocus.dll
@@ -349,3 +347,8 @@ C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.dll
 C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.pdb
 C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._19.resources
 C:\Users\Ewen\Source\Repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._20.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._17.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._18.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._19.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.Migrations._20.resources
+C:\Users\Admin\source\repos\Diplodocus2\Diplodocus\obj\Debug\Diplodocus.csprojAssemblyReference.cache

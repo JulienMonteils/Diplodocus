@@ -1,7 +1,11 @@
 ﻿@model Diplodocus.Models.SchoolSubject
 
 @{
-  
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["ManagerId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
 }
 
 <!DOCTYPE html>

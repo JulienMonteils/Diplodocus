@@ -14,25 +14,37 @@
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <a href="@Url.Action("Logout","Users")" class="navbar-brand" id="right-Button">Logout</a>
+            <div>
                 @if (Session["UserType"].ToString().Contains("Student"))
                 {
                     @Html.ActionLink("Accueil", "StudentStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
-                    <a href="@Url.Action("GestionStudent", "Users", new { id = Session["UserId"] })" class="navbar-brand" id="right-Button">Gestion</a>
                 }
                 else
                 {
                     if (Session["UserType"].ToString().Contains("Manager"))
                     {
                         @Html.ActionLink("Accueil", "ManagerStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
-                        <a href="@Url.Action("GestionManager", "Users", new { id = Session["UserId"] })" class="navbar-brand" id="right-Button">Gestion</a>
                     }
                 }
             </div>
+            <div class="navbar-right">
+                @if (Session["UserType"].ToString().Contains("Student"))
+                {
+                    <a href="@Url.Action("GestionStudent", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Gestion<img src="~/Images/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                }
+                else
+                {
+                    if (Session["UserType"].ToString().Contains("Manager"))
+                    {
+                        <a href="@Url.Action("GestionManager", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Gestion<img src="~/Images/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                    }
+                }
+                <a href="@Url.Action("Logout","Users")" class="navbar-brand" style="display:inline-block; padding:10px;">Logout <img src="~/Images/off-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+            </div>
         </div>
+ 
     </div>
     <div class="container body-content">
         @RenderBody()

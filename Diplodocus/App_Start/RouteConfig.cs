@@ -18,7 +18,7 @@ namespace Diplodocus
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Users", id = UrlParameter.Optional }
+                defaults: new { controller = "Users", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

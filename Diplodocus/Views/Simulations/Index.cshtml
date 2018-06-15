@@ -2,9 +2,14 @@
 @using Diplodocus.Models
 @using Diplodocus.ViewModels
 
-@{ 
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["StudentId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
 }
+
 <!DOCTYPE html>
 
 <html>

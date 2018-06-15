@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<Diplodocus.Models.Grade>
 
-@{
 
+@{
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["ManagerId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
 }
 
 <!DOCTYPE html>

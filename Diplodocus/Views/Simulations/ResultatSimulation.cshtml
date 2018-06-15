@@ -2,9 +2,14 @@
 
 
 <!DOCTYPE html>
-@{ 
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["StudentId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
 }
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />

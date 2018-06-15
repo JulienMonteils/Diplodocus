@@ -1,7 +1,12 @@
 ﻿@model Diplodocus.Models.Student
 
+
 @{
-  
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    if (Session["ManagerId"] == null)
+    {
+        Response.Redirect("~/Users/Login");
+    }
 }
 
 <!DOCTYPE html>
@@ -19,51 +24,51 @@
             <dt>
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.FirstName)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.LastName)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.LastName)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.AddressMail)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.AddressMail)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.PhoneNumber)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Password)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Password)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.GradeIdGrade)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.GradeIdGrade)
             </dd>
-    
+
         </dl>
     </div>
     <p>
