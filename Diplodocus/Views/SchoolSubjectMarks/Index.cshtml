@@ -8,6 +8,7 @@
     }
 }
 
+
 <!DOCTYPE html>
 
 <html>
@@ -16,30 +17,49 @@
     <title>Index</title>
 </head>
 <body>
+    <p></p>
+    <br />
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Ajouter une note", "Create")
     </p>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Mark)
+                Note
+            </th>
+            <th>
+                nom de la matière
+            </th>
+
+            <th>
+                Etudiant
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
+
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Mark)
             </td>
+
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdMark }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdMark }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IdMark })
+
+                @Html.DisplayFor(modelItem => item.SchoolSubject.SubjectName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new { id = item.IdMark }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdMark }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.IdMark })
             </td>
         </tr>
-    }
-    
+        }
+
     </table>
 </body>
 </html>

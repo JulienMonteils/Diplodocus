@@ -18,6 +18,9 @@ namespace Diplodocus.Controllers
         // GET: Students
         public async Task<ActionResult> Index()
         {
+
+            var students = db.Students.Include(s => s.Grade);
+
             return View(await db.Students.ToListAsync());
         }
 
@@ -39,7 +42,14 @@ namespace Diplodocus.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName");
             return View();
+        }
+        public ActionResult ReturnToManagerStart()
+        {
+
+
+            return RedirectToAction("ManagerStart", "Start");
         }
 
         // POST: Students/Create
@@ -71,8 +81,12 @@ namespace Diplodocus.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
             return View(student);
         }
+
+
+
 
         // POST: Students/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

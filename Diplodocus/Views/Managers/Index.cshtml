@@ -3,7 +3,7 @@
 
 @{
     Layout = "~/Views/Shared/LoginLayout.cshtml";
-    if (Session["StudentId"] == null)
+    if (Session["ManagerId"] == null)
     {
         Response.Redirect("~/Users/Login");
     }
@@ -58,9 +58,9 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUser }) |
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.IdUser }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IdUser }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUser })
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdUser })
                 </td>
             </tr>
         }

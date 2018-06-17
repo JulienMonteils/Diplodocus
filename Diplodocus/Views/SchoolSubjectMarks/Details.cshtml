@@ -23,16 +23,32 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Mark)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Mark)
             </dd>
-    
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentIdStudent)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentIdStudent)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SchoolSubjectIdSchoolSubject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SchoolSubjectIdSchoolSubject)
+            </dd>
+
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdMark }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.IdMark }) |
+        @Html.ActionLink("Retour", "Index")
     </p>
 </body>
 </html>

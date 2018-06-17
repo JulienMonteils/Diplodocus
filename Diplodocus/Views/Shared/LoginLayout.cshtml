@@ -17,15 +17,18 @@
     <div class="navbar-inverse navbar-fixed-top">
         <div class="container">
             <div>
-                @if (Session["UserType"].ToString().Contains("Student"))
-                {
-                    @Html.ActionLink("Accueil", "StudentStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
-                }
-                else
+                @if (Session != null)
                 {
                     if (Session["UserType"].ToString().Contains("Manager"))
                     {
-                        @Html.ActionLink("Accueil", "ManagerStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Accueil", "StudentStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else
+                    {
+                        if (Session["UserType"].ToString().Contains("Manager"))
+                        {
+                    @Html.ActionLink("Accueil", "ManagerStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                        }
                     }
                 }
             </div>

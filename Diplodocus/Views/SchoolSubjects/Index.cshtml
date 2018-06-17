@@ -16,10 +16,11 @@
     <title>Les Matières</title>
 </head>
 <body>
+    <p></p>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Creer une nouvelle matière", "Create")
     </p>
-    <table class="table" >
+    <table class="table">
         <tr>
             <th>
                 Nom de la filière
@@ -67,9 +68,10 @@
                     @Html.DisplayFor(modelItem => item.Coef)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdSubject }) |
+                    @Html.ActionLink("Ajouter une note", "CreateMark", new { id = item.IdSubject }) |
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.IdSubject }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IdSubject }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdSubject })
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdSubject })
                 </td>
             </tr>
         }

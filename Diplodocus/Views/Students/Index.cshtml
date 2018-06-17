@@ -67,16 +67,19 @@
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GradeIdGrade)
+                    @Html.DisplayFor(modelItem => item.Grade.gradeName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUser }) |
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.IdUser }) |
                     @Html.ActionLink("Details", "Details", new { id = item.IdUser }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUser })
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdUser })
                 </td>
             </tr>
         }
 
     </table>
+
+    <br />
+    @Html.ActionLink("Menu", "ReturnToManagerStart") |
 </body>
 </html>

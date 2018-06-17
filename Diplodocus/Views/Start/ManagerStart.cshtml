@@ -10,35 +10,41 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="~/Content/style1.css" />
     <meta name="viewport" content="width=device-width" />
     <title>Manager menu</title>
 </head>
-<body>
+<body class="imgbackground">
     <p>
-        Vous etes Manager :
-        <br /><br />
-        ManagerId => @Session["UserId"]
-        <br />
-        ManagerFirstName => @Session["ManagerFirstName"]
-        <br />
-        ManagerLastName => @Session["ManagerLastName"]
-        <br />
-        ManagerPhoneNumber => @Session["ManagerPhoneNumber"]
-        <br />
-        ManagerAddressEmail => @Session["ManagerAddressEmail"]
-        <br />
-        ManagerAddressEmail => @Session["UserType"]
-        <br /><br />
-        Action :
+        <!--
+    Vous etes Manager :
+    <br /><br />
+    ManagerId => @Session["UserId"]
+    <br />
+    ManagerFirstName => @Session["ManagerFirstName"]
+    <br />
+    ManagerLastName => @Session["ManagerLastName"]
+    <br />
+    ManagerPhoneNumber => @Session["ManagerPhoneNumber"]
+    <br />
+    ManagerAddressEmail => @Session["ManagerAddressEmail"]
+    <br />
+    ManagerAddressEmail => @Session["UserType"]
+    <br /><br />
+    Action :
+        -->
+        <br />    <br />    <br />    <br />  <br />
 
-        <br />
-        @Html.ActionLink("Gérer les filères", "ManageGradeRedirect")
-        <br />
-        @Html.ActionLink("Gérer les matières", "ManageSubjectRedirect")
-        <br />
-        @Html.ActionLink("Gérer les étudiants", "ManageStudentRedirect")
-
-
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" class="btnManager" value="Gérer les filères" onclick="location.href='@Url.Action("ManageGradeRedirect", "Start")'" />
+                <input type="button" class="btnManager" value="Gérer les matières" onclick="location.href='@Url.Action("ManageSubjectRedirect", "Start")'" /><br />
+                <input type="button" class="btnManager" value="Gérer les étudiants" onclick="location.href='@Url.Action("ManageStudentRedirect", "Start")'" />
+                <input type="button" class="btnManager" value="Gérer les managers" onclick="location.href='@Url.Action("ManageManagerRedirect", "Start")'" /><br />
+                <input type="button" class="btnManager" value="Gérer les enseignants" onclick="location.href='@Url.Action("ManageTeacherRedirect", "Start")'" />
+                <input type="button" class="btnManager" value="Ajouter une note" onclick="location.href='@Url.Action("AddMarkRedirect", "Start")'" />
+            </div>
+        </div>
 
 
     </p>

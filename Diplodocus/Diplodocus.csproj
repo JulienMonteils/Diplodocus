@@ -218,6 +218,26 @@
     <Compile Include="Migrations\201806141719164_20.Designer.cs">
       <DependentUpon>201806141719164_20.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806151342111_21.cs" />
+    <Compile Include="Migrations\201806151342111_21.Designer.cs">
+      <DependentUpon>201806151342111_21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806172020202_22.cs" />
+    <Compile Include="Migrations\201806172020202_22.Designer.cs">
+      <DependentUpon>201806172020202_22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806172022337_23.cs" />
+    <Compile Include="Migrations\201806172022337_23.Designer.cs">
+      <DependentUpon>201806172022337_23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806172056255_24.cs" />
+    <Compile Include="Migrations\201806172056255_24.Designer.cs">
+      <DependentUpon>201806172056255_24.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806172228342_25.cs" />
+    <Compile Include="Migrations\201806172228342_25.Designer.cs">
+      <DependentUpon>201806172228342_25.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -239,6 +259,7 @@
     </Content>
     <Content Include="Content\bootstrap-def.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\style1.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -342,6 +363,7 @@
     <Content Include="Views\Simulations\IndexRattrapage.cshtml" />
     <Content Include="Views\Simulations\ResultatRattrapage.cshtml" />
     <Content Include="Views\Simulations\ResultatSimulation.cshtml" />
+    <Content Include="Views\SchoolSubjects\CreateMark.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -400,6 +422,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806141719164_20.resx">
       <DependentUpon>201806141719164_20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806151342111_21.resx">
+      <DependentUpon>201806151342111_21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806172020202_22.resx">
+      <DependentUpon>201806172020202_22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806172022337_23.resx">
+      <DependentUpon>201806172022337_23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806172056255_24.resx">
+      <DependentUpon>201806172056255_24.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806172228342_25.resx">
+      <DependentUpon>201806172228342_25.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

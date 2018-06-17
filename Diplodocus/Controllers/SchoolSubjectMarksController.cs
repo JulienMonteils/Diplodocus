@@ -18,12 +18,16 @@ namespace Diplodocus.Controllers
         // GET: SchoolSubjectMarks
         public async Task<ActionResult> Index()
         {
+            ViewBag.StudentIdStudent = new SelectList(db.Students, "IdUser", "LastName");
+            ViewBag.SchoolSubjectIdSchoolSubject = new SelectList(db.SchoolSubjects, "IdSubject", "SubjectName");
             return View(await db.SchoolSubjectMarks.ToListAsync());
         }
 
         // GET: SchoolSubjectMarks/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            ViewBag.StudentIdStudent = new SelectList(db.Students, "IdUser", "LastName");
+            ViewBag.SchoolSubjectIdSchoolSubject = new SelectList(db.SchoolSubjects, "IdSubject", "SubjectName");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +43,9 @@ namespace Diplodocus.Controllers
         // GET: SchoolSubjectMarks/Create
         public ActionResult Create()
         {
+
+            ViewBag.StudentIdStudent = new SelectList(db.Students, "IdUser", "LastName");
+            ViewBag.SchoolSubjectIdSchoolSubject = new SelectList(db.SchoolSubjects, "IdSubject", "SubjectName");
             return View();
         }
 
@@ -47,7 +54,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdMark,Mark")] SchoolSubjectMark schoolSubjectMark)
+        public async Task<ActionResult> Create([Bind(Include = "IdMark,Mark,StudentIdStudent,SchoolSubjectIdSchoolSubject,Student,SchoolSubject")] SchoolSubjectMark schoolSubjectMark)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +62,8 @@ namespace Diplodocus.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.StudentIdStudent = new SelectList(db.Students, "IdUser", "LastName");
+            ViewBag.SchoolSubjectIdSchoolSubject = new SelectList(db.SchoolSubjects, "IdSubject", "SubjectName");
 
             return View(schoolSubjectMark);
         }
@@ -71,6 +80,8 @@ namespace Diplodocus.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StudentIdStudent = new SelectList(db.Students, "IdUser", "LastName");
+            ViewBag.SchoolSubjectIdSchoolSubject = new SelectList(db.SchoolSubjects, "IdSubject", "SubjectName");
             return View(schoolSubjectMark);
         }
 
@@ -79,7 +90,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdMark,Mark")] SchoolSubjectMark schoolSubjectMark)
+        public async Task<ActionResult> Edit([Bind(Include = "IdMark,Mark,StudentIdStudent,SchoolSubjectIdSchoolSubject,Student,SchoolSubject")] SchoolSubjectMark schoolSubjectMark)
         {
             if (ModelState.IsValid)
             {

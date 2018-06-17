@@ -24,19 +24,36 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Mark)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Mark)
             </dd>
-    
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StudentIdStudent)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StudentIdStudent)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SchoolSubjectIdSchoolSubject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SchoolSubjectIdSchoolSubject)
+            </dd>
+
         </dl>
-    
-        @using (Html.BeginForm()) {
+
+        @using (Html.BeginForm())
+        {
             @Html.AntiForgeryToken()
-    
+
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Retour", "Index")
             </div>
         }
     </div>

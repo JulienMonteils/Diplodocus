@@ -62,11 +62,11 @@ namespace Diplodocus.Controllers
             return View(schoolSubject);
         }
 
-        // GET: SchoolSubjects/Edit/5
+       // GET: SchoolSubjects/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
-            {
+             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             SchoolSubject schoolSubject = await db.SchoolSubjects.FindAsync(id);
@@ -78,12 +78,31 @@ namespace Diplodocus.Controllers
             return View(schoolSubject);
         }
 
-        // POST: SchoolSubjects/Edit/5
+
+
+
+        // GET: SchoolSubjects/CreateMark/5
+        public async Task<ActionResult> CreateMark(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SchoolSubject schoolSubject = await db.SchoolSubjects.FindAsync(id);
+            if (schoolSubject == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.GradeIdGrade = new SelectList(db.SchoolSubjects, "IdschoolSubject", "schoolSubjectName", schoolSubject.SchoolSubjectMark);
+            return View(schoolSubject);
+        }
+
+        // POST: SchoolSubjects/CreateMark/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade,Coef")] SchoolSubject schoolSubject)
+        public async Task<ActionResult> CreateMark([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade,Coef")] SchoolSubject schoolSubject)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +127,28 @@ namespace Diplodocus.Controllers
                 return HttpNotFound();
             }
             return View(schoolSubject);
+
         }
+
+
+        // POST: SchoolSubjects/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "IdSubject,SubjectName,SubjectMarkFloor,Semester,Rattrapable,GradeIdGrade,Coef")] SchoolSubject schoolSubject)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(schoolSubject).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", schoolSubject.GradeIdGrade);
+            return View(schoolSubject);
+        }
+
+
 
         // POST: SchoolSubjects/Delete/5
         [HttpPost, ActionName("Delete")]

@@ -58,6 +58,29 @@ namespace Diplodocus.Controllers
             return RedirectToAction("Index", "SchoolSubjects");
         }
 
+        public ActionResult ManageManagerRedirect()
+        {
+
+
+            return RedirectToAction("Index", "Managers");
+        }
+
+        public ActionResult ManageTeacherRedirect()
+        {
+
+
+            return RedirectToAction("Index", "Teachers");
+        }
+
+
+
+        public ActionResult AddMarkRedirect()
+        {
+
+
+            return RedirectToAction("Index", "SchoolSubjectMarks");
+        }
+        
 
     }
 }

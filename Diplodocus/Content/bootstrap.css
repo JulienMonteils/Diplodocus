@@ -1106,6 +1106,39 @@ th {
     content: "\e190";
 }
 
+
+
+.btnManager {
+    background: #f2fafa;
+    background-image: -webkit-linear-gradient(top, #f2fafa, #96dc96);
+    background-image: -moz-linear-gradient(top, #f2fafa, #96dc96);
+    background-image: -o-linear-gradient(top, #f2fafa, #96dc96);
+    background-image: linear-gradient(to bottom, #f2fafa, #96dc96);
+    -webkit-border-radius: 7;
+    -moz-border-radius: 7;
+    border-radius: 7px;
+    font-family: Georgia;
+    color: #000000;
+    font-size: 28px;
+    padding: 10px 25px 10px 25px;
+    border: solid #3d3d3d 3px;
+    text-decoration: none;
+    width:400px;
+    margin-left:40px;
+    margin-top:50px;
+}
+
+    .btnManager:hover {
+        background: #61f759;
+        background-image: -webkit-linear-gradient(top, #61f759, #54ba00);
+        background-image: -moz-linear-gradient(top, #61f759, #54ba00);
+        background-image: -ms-linear-gradient(top, #61f759, #54ba00);
+        background-image: -o-linear-gradient(top, #61f759, #54ba00);
+        background-image: linear-gradient(to bottom, #61f759, #54ba00);
+        text-decoration: none;
+    }
+
+
 .glyphicon-sound-5-1:before {
     content: "\e191";
 }
@@ -1409,12 +1442,15 @@ html {
 }
 
 body {
+    
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #666666;
     background-color: #ffffff;
 }
+
+
 
 input,
 button,

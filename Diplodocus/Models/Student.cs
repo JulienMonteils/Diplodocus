@@ -17,6 +17,7 @@
         public string Password { get; set; }
         [Required]
         public int GradeIdGrade { get; set; }
+        public virtual Grade Grade { get; set; }
     }
 
 
