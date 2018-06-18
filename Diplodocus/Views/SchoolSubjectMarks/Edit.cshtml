@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
+    <title> Edition</title>
 </head>
 <body>
     @using (Html.BeginForm())
@@ -27,7 +27,8 @@
             @Html.HiddenFor(model => model.IdMark)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Mark, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">Note </label>
+         
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Mark, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Mark, "", new { @class = "text-danger" })
@@ -35,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.StudentIdStudent, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">Etudiant </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.StudentIdStudent, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.StudentIdStudent, "", new { @class = "text-danger" })
@@ -43,7 +44,7 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.SchoolSubjectIdSchoolSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+               <label class="control-label col-md-2">Matière </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.SchoolSubjectIdSchoolSubject, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.SchoolSubjectIdSchoolSubject, "", new { @class = "text-danger" })

@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
+    <title> Edition</title>
 </head>
 <body>
     @using (Html.BeginForm())
@@ -23,7 +23,7 @@
             @Html.HiddenFor(model => model.IdGrade)
     
             <div class="form-group">
-                @Html.LabelFor(model => model.gradeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label class="control-label col-md-2">Nom de la filière </label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.gradeName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.gradeName, "", new { @class = "text-danger" })
@@ -39,7 +39,7 @@
     }
     
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Retour", "Index")
     </div>
 </body>
 </html>
