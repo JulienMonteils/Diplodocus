@@ -39,6 +39,7 @@
         <tr>
             <th>Matière</th>
             <th>Note</th>
+            <th>Coeficient</th>
             <th>Commentaire</th>
         </tr>
         @foreach (var subject in Model.Subjects)
@@ -48,6 +49,7 @@
                 {
                     <td>@subject.SubjectName</td>
                     <td>@Model.LesNotes[subject]</td>
+                    <td>@subject.Coef</td>
                     if (Model.LesNotes[subject] < subject.SubjectMarkFloor)
                     {
 
@@ -88,6 +90,7 @@
         <tr>
             <th>Matière</th>
             <th>Note</th>
+            <th>Coeficient</th>
             <th>Commentaire</th>
         </tr>
 
@@ -98,6 +101,7 @@
                 {
                     <td>@subject.SubjectName</td>
                     <td>@Model.LesNotes[subject]</td>
+                    <td>@subject.Coef</td>
                     if (Model.LesNotes[subject] < subject.SubjectMarkFloor)
                     {
                         if (subject.Rattrapable == true)
