@@ -26,10 +26,11 @@ namespace Diplodocus.Controllers
             };
 
             // Pour chaque matières qu'on a récupéré dans la filière dans laquelle on est :
+            
             foreach (var SchoolSubjects in viewModel.SchoolSubjects)
             {
                 //Il faut faire un test sur l'existance d'une liste ou non
-
+                var i = 0;
                 foreach (var schoolSubjectMark in SchoolSubjects.SchoolSubjectMark)
                 {
                     if (schoolSubjectMark.Student.IdUser == viewModel.Student.IdUser)
@@ -37,17 +38,31 @@ namespace Diplodocus.Controllers
                         if (!(schoolSubjectMark.Mark == null))
                         {
                             viewModel.SchoolSubjectMarks.Add(schoolSubjectMark);
-                            viewModel.TestNotes.Add(SchoolSubjects, schoolSubjectMark.Mark.Value);
+                            //viewModel.TestNotes.Add(SchoolSubjects, schoolSubjectMark.Mark.Value);
                             viewModel.Notes.Add(schoolSubjectMark.Mark.Value);
+                            i = i + 1;
                         }
                         else
                         {
                             viewModel.SchoolSubjectMarks.Add(new SchoolSubjectMark { Mark = 0, Student = viewModel.Student });
-                            viewModel.TestNotes.Add(SchoolSubjects, 0);
+                            //viewModel.TestNotes.Add(SchoolSubjects, 0);
                             viewModel.Notes.Add(0);
                         }
 
                     }
+                    else
+                    {
+                       
+                        //viewModel.SchoolSubjectMarks.Add(new SchoolSubjectMark { Mark = 0, Student = viewModel.Student });
+                        //viewModel.TestNotes.Add(SchoolSubjects, 0);
+                        //viewModel.Notes.Add(0);
+                    }
+                }
+                if (i == 0)
+                {
+                    viewModel.SchoolSubjectMarks.Add(new SchoolSubjectMark { Mark = 0, Student = viewModel.Student });
+                    //viewModel.TestNotes.Add(SchoolSubjects, 0);
+                    viewModel.Notes.Add(0);
                 }
 
             }
@@ -137,6 +152,31 @@ namespace Diplodocus.Controllers
 
                 var moyenneS1 = notesMoyenneS1.Average();
                 var moyenneS2 = notesMoyenneS2.Average();
+                var moyenneS1Coef = new List<int>();
+                var moyenneS2Coef = new List<int>();
+                var moyenneGAvecCoef = new List<int>();
+                foreach(KeyValuePair<SchoolSubject,int> couple in lesNotes)
+                {
+                    for(var j = 0; j < couple.Key.Coef; j++)
+                    {
+                        moyenneGAvecCoef.Add(couple.Value);
+                    }
+                    if (couple.Key.Semester == 1)
+                    {
+                        for (var j = 0; j < couple.Key.Coef; j++)
+                        {
+                            moyenneS1Coef.Add(couple.Value);
+                        }
+                    }
+                    else
+                    {
+                        for (var j = 0; j < couple.Key.Coef; j++)
+                        {
+                            moyenneS2Coef.Add(couple.Value);
+                        }
+                    }
+                }
+
 
 
 
@@ -144,9 +184,9 @@ namespace Diplodocus.Controllers
                 {
                     Student = db.Students.SingleOrDefault(c => c.IdUser == viewModel.Student.IdUser),
                     Grade = db.Grades.SingleOrDefault(c => c.IdGrade == viewModel.Grade.IdGrade),
-                    Moyenne = moyenne,
-                    MoyenneS1 = moyenneS1,
-                    MoyenneS2 = moyenneS2,
+                    Moyenne = Math.Round(moyenneGAvecCoef.Average(),2),
+                    MoyenneS1 = Math.Round(moyenneS1Coef.Average(),2),
+                    MoyenneS2 = Math.Round(moyenneS2Coef.Average(),2),
                     LesNotes = lesNotes,
                     Subjects = lesSujets,
                     matieresRattrapage = new List<SchoolSubject>()
@@ -341,15 +381,40 @@ namespace Diplodocus.Controllers
             var moyenneS1 = notesMoyenneS1.Average();
             var moyenneS2 = notesMoyenneS2.Average();
 
+            var moyenneS1Coef = new List<int>();
+            var moyenneS2Coef = new List<int>();
+            var moyenneGAvecCoef = new List<int>();
+            foreach (KeyValuePair<SchoolSubject, int> couple in lesNotes)
+            {
+                for (var j = 0; j < couple.Key.Coef; j++)
+                {
+                    moyenneGAvecCoef.Add(couple.Value);
+                }
+                if (couple.Key.Semester == 1)
+                {
+                    for (var j = 0; j < couple.Key.Coef; j++)
+                    {
+                        moyenneS1Coef.Add(couple.Value);
+                    }
+                }
+                else
+                {
+                    for (var j = 0; j < couple.Key.Coef; j++)
+                    {
+                        moyenneS2Coef.Add(couple.Value);
+                    }
+                }
+            }
+
 
 
             var viewModelResultat = new SimulationResultViewModel
             {
                 Student = db.Students.SingleOrDefault(c => c.IdUser == viewModel.Student.IdUser),
                 Grade = db.Grades.SingleOrDefault(c => c.IdGrade == viewModel.Grade.IdGrade),
-                Moyenne = moyenne,
-                MoyenneS1 = moyenneS1,
-                MoyenneS2 = moyenneS2,
+                Moyenne = Math.Round(moyenneGAvecCoef.Average(),2),
+                MoyenneS1 = Math.Round(moyenneS1Coef.Average(),2),
+                MoyenneS2 = Math.Round(moyenneS2Coef.Average(),2),
                 LesNotes = lesNotes,
                 Subjects = lesSujets,
                 matieresRattrapage = new List<SchoolSubject>()
