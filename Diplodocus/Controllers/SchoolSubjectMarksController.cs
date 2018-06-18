@@ -18,10 +18,12 @@ namespace Diplodocus.Controllers
         // GET: SchoolSubjectMarks
         public async Task<ActionResult> Index()
         {
-            ViewBag.StudentIdStudent = new SelectList(db.Students, "IdUser", "LastName");
+            var schoolSubjectMarks = db.SchoolSubjectMarks.Include(s => s.Student);
+            ViewBag.StudentIdStudent = new SelectList(db.Students, "LastName", "IdUser");
             ViewBag.SchoolSubjectIdSchoolSubject = new SelectList(db.SchoolSubjects, "IdSubject", "SubjectName");
-            return View(await db.SchoolSubjectMarks.ToListAsync());
+            return View(await schoolSubjectMarks.ToListAsync());
         }
+
 
         // GET: SchoolSubjectMarks/Details/5
         public async Task<ActionResult> Details(int? id)

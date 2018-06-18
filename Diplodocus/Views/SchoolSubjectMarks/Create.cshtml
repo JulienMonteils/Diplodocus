@@ -62,20 +62,20 @@
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.StudentIdStudent, "StudentIdStudent", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Student, "StudentIdStudent", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("StudentIdStudent", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.StudentIdStudent, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Student, "", new { @class = "text-danger" })
                 </div>
             </div>
 
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.SchoolSubjectIdSchoolSubject, "SchoolSubjectIdSchoolSubject", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.SchoolSubject, "SchoolSubjectIdSchoolSubject", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("SchoolSubjectIdSchoolSubject", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.SchoolSubjectIdSchoolSubject, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.SchoolSubject, "", new { @class = "text-danger" })
                 </div>
             </div>
 

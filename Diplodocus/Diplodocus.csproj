@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\SchoolSubjectMarks1Controller.cs" />
     <Compile Include="Controllers\SchoolSubjectMarksController.cs" />
     <Compile Include="Controllers\SimulationsController.cs" />
     <Compile Include="Controllers\StartController.cs" />
@@ -364,6 +365,11 @@
     <Content Include="Views\Simulations\ResultatRattrapage.cshtml" />
     <Content Include="Views\Simulations\ResultatSimulation.cshtml" />
     <Content Include="Views\SchoolSubjects\CreateMark.cshtml" />
+    <Content Include="Views\SchoolSubjectMarks1\Create.cshtml" />
+    <Content Include="Views\SchoolSubjectMarks1\Delete.cshtml" />
+    <Content Include="Views\SchoolSubjectMarks1\Details.cshtml" />
+    <Content Include="Views\SchoolSubjectMarks1\Edit.cshtml" />
+    <Content Include="Views\SchoolSubjectMarks1\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
