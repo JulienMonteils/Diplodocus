@@ -6,3 +6,4 @@ debug/*
 # Ignorer tous les fichiers .sqlite
 *.sqlite
 .vs/
+/Diplodocus/obj/Debug
