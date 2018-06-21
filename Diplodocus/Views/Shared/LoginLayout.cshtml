@@ -4,57 +4,73 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title Diplodocus</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        #right-Button {
-            float: right;
-        }
-    </style>
 </head>
 <body>
-    <div class="navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="border:0px solid #262626">
         <div class="container">
-            <div>
-                @if (Session != null)
-                {
-                    if (Session["UserType"].ToString().Contains("Manager"))
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    @if (Session != null)
                     {
-                @Html.ActionLink("Accueil", "StudentStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
-                    }
-                    else
-                    {
-                        if (Session["UserType"].ToString().Contains("Manager"))
+                        if (Session["UserType"].ToString().Contains("Student"))
                         {
-                    @Html.ActionLink("Accueil", "ManagerStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Accueil", "StudentStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                        }
+                        else
+                        {
+                            if (Session["UserType"].ToString().Contains("Manager"))
+                            {
+                                @Html.ActionLink("Accueil", "ManagerStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Accueil", "TeacherStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                            }
                         }
                     }
-                }
+                </ul>
             </div>
+
             <div class="navbar-right">
+
                 @if (Session["UserType"].ToString().Contains("Student"))
                 {
-                    <a href="@Url.Action("GestionStudent", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Gestion<img src="~/Images/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                    <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7"> Bienvenue, @Session["StudentFirstName"] @Session["StudentLastName"]</div>
+                    <a href="@Url.Action("GestionStudent", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Profil<img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
                 }
                 else
                 {
                     if (Session["UserType"].ToString().Contains("Manager"))
                     {
-                        <a href="@Url.Action("GestionManager", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Gestion<img src="~/Images/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                        <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7"> Bienvenue, @Session["ManagerFirstName"] @Session["ManagerLastName"]</div>
+                        <a href="@Url.Action("GestionManager", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Profil<img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                    }
+                    else
+                    {
+                        if (Session["UserType"].ToString().Contains("Teacher"))
+                        {
+                            <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7"> Bienvenue, @Session["TeacherFirstName"] @Session["TeacherLastName"]</div>
+                            <a href="@Url.Action("GestionTeacher", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Profil<img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                        }
                     }
                 }
-                <a href="@Url.Action("Logout","Users")" class="navbar-brand" style="display:inline-block; padding:10px;">Logout <img src="~/Images/off-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                <a href="@Url.Action("Logout","Users")" class="navbar-brand" style="display:inline-block; padding:10px;">Déconnexion <img src="~/Pictures/off-32x32.png" style="display:inline-block;padding-left:5px" /></a>
             </div>
         </div>
- 
     </div>
     <div class="container body-content">
         @RenderBody()
-        <!--<hr />-->
-        <!--<footer>-->
-        <!--<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>-->
-        <!--</footer>-->
+
+        <div class="navbar navbar-inverse navbar-fixed-bottom" style="border:0px solid #262626">
+            <div class="container">
+                <ul class="nav navbar-nav" style="width:100%; padding-left:39%; font-size:30px">
+                    <li class="navbar-brand" style="font-size:30px"><strong>@DateTime.Now.Year - </strong><strong style="color:greenyellow">DIPLO</strong><strong>DOCUS</strong></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

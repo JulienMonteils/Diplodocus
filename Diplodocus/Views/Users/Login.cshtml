@@ -1,7 +1,19 @@
 ﻿@model Diplodocus.ViewModels.User
 @{
     ViewBag.Title = "Diplodocus";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["StudentId"] != null)
+    {
+        Response.Redirect("~/Start/StudentStart");
+    }
+    if (Session["ManagerId"] != null)
+    {
+        Response.Redirect("~/Start/ManagerStart");
+    }
+    if (Session["TeacherId"] != null)
+    {
+        Response.Redirect("~/Start/TeacherStart");
+    }
 }
 
 <!DOCTYPE html>
@@ -11,18 +23,6 @@
     <meta name="viwport" content="width=device-width" />
     <title>Login</title>
     <style>
-        #login-div {
-            position: absolute;
-            left: 38%;
-            top: 40%;
-            border: 1px solid #ccc;
-            padding: 30px 30px 30px 30px;
-            border-radius: 5px;
-        }
-        /*#green-button{
-            background-color:forestgreen;
-            color:white;
-        }*/
         h1 {
             max-width: 30%;
             position: absolute;
@@ -34,15 +34,29 @@
             border-radius: 5px;
             text-align: left;
         }
-        /*input{
-            border-radius:5px;
-        }*/
+
+        .panel-heading {
+            padding: 5px 15px;
+        }
+
+        .panel-footer {
+            padding: 1px 15px;
+            color: #A0A0A0;
+        }
+
+        .profile-img {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 10px;
+            display: block;
+        }
     </style>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 </head>
-<body>
+<body background="~/Pictures/wallpaper.jpg">
+    <!--
     <h1 style="">Diplodocus</h1>
     <div id="login-div">
         @using (Html.BeginForm("Autherize", "Users", FormMethod.Post))
@@ -59,7 +73,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                  
+
                     <td>@Html.LabelFor(model => model.Email)</td>
                     <td>@Html.EditorFor(model => model.Email)</td>
                 </tr>
@@ -91,6 +105,63 @@
             </table>
         }
     </div>
+    -->
+
+    <br /><br />
+
+    @using (Html.BeginForm("Autherize", "Users", FormMethod.Post))
+    {
+        <div class="container" style="margin-top:15%;opacity:0.92">
+            <div class="row">
+                <div class="col-sm-6 col-md-8 col-md-offset-2">
+                    <div class="panel panel-default" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                        <div class="panel-heading" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                            <strong>Pour continuer, veuillez vous connecter </strong>
+                        </div>
+                        <div class="panel-body" style="color: greenyellow; background-color:#404040; border:0px solid #262626">
+                            <form role="form" action="#" method="POST">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="center-block">
+                                            <img class="profile-img" style="width:250px;height:200px;" src="~/Pictures/logo-accueil.png" alt="Logo">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                                                        <i><img src="~/Pictures/email-32x32.png" style="display:inline-block;padding-left:5px" /></i>
+                                                    </span>
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", style = "background-color:#a5a5a5; border-color:#262626; color:white" } })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                                                        <i><img src="~/Pictures/lock-32x32.png" style="display:inline-block;padding-left:5px" /></i>
+                                                    </span>
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Mot de passe", style = "background-color:#a5a5a5; border-color:#262626" } })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="field-validation-error" style="padding-left:33%; color:red">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Connexion" style="color: white; background-color:red; border:0px solid #262626">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="panel-footer" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+
+                            Vous n'avez pas de compte ? @Html.ActionLink("Inscrivez-vous !", "Inscription")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>

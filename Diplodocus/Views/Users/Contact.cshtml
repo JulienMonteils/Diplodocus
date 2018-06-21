@@ -1,0 +1,58 @@
+﻿@model Diplodocus.ViewModels.User
+@{
+    /**/
+
+    ViewBag.Title = "Diplodocus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact</title>
+</head>
+<body background="~/Pictures/wallpaper.jpg">
+
+    @using (Html.BeginForm("AddStudent", "Students", FormMethod.Post))
+    {
+        <div class="container" style="margin-top:15%;opacity:0.92">
+            <div class="row">
+                <div class="col-sm-6 col-md-8 col-md-offset-2">
+                    <div class="panel panel-default" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                        <div class="panel-heading" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                            <strong>Informations contact</strong>
+                        </div>
+                        <div class="panel-body" style="color: greenyellow; background-color:#404040; border:0px solid #262626">
+                            <form role="form" action="#" method="POST">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                            En cas de problème contacter :
+                                            <br /><br />
+                                            <div style="text-indent: 30px; font-weight:bold">Ewen Fayat : Ewen.Fayat@gmail.com</div>
+                                            <br /><br />
+                                            <div style="text-indent: 30px; font-weight:bold">Julien Monteils  : Julien.Monteils@gmail.com</div>
+                                            <br /><br />
+                                            <div style="text-indent: 30px; font-weight:bold">Vincent Pruvost : Vincent.Pruvost@gmail.com</div>
+                                            <br /><br />
+                                            En cas de pertes de votre mot de passe contacter :
+                                            <br /><br />
+                                            <div style="text-indent: 30px; font-weight:bold">Prénom Nom : Prenom.Nom@gmail.com</div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="panel-footer" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                            <!--Vous possèdez déjà un compte @Html.ActionLink("Connectez vous !", "Login")-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</body>
+</html>

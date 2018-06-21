@@ -1,13 +1,12 @@
 ﻿@model Diplodocus.Models.Manager
 @{
-                /**/
-
-                Layout = "~/Views/Shared/LoginLayout.cshtml";
-                ViewBag.Title = "Gestion Page";
-                if (Session["UserId"] == null)
-                {
-                    Response.Redirect("~/Users/Login");
-                } }
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    ViewBag.Title = "Gestion Page";
+    if (Session["ManagerId"] == null || (int)Session["ManagerId"] != Model.IdUser)
+    {
+        Response.Redirect("~/Users/Login");
+    }
+}
 
 <!DOCTYPE html>
 
@@ -16,15 +15,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>Gestion</title>
     <style>
-        .vl {
-            border-left: 6px solid black;
-            height: 500px;
-            position: absolute;
-            left: 50%;
-            margin-left: -3px;
-            top: 20%;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
@@ -35,13 +25,14 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>Change student informations</h4>
+                <br /><br />
+                <h4>Changer vos informations</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.IdUser)
 
                 <div class="form-group">
-                    <label class="control-label col-md-2"> Prénom </label>
+                    <div class="control-label col-md-2"><strong>Prénom</strong></div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
@@ -49,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2"> Nom </label>
+                    <div class="control-label col-md-2"><strong>Nom</strong></div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
@@ -57,7 +48,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="control-label col-md-2"><strong>Adresse Email</strong></div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
@@ -65,14 +56,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">Téléphone </label>
+                    <div class="control-label col-md-2"><strong>Numéro de téléphone</strong></div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-                <div class="vl"></div>
 
                 <div class="form-group">
                     <div class="col-md-10">
@@ -82,7 +71,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
+                        <input type="submit" value="Sauvegarder" class="btn btn-default" />
                     </div>
                 </div>
             </div>
@@ -98,7 +87,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.IdUser)
                     <div class="form-group">
-                    <label class="control-label col-md-2">Mot de passe </label>
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })

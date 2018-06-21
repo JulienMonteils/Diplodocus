@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Text.RegularExpressions;
 
 namespace Diplodocus.Controllers
 {
@@ -22,13 +23,18 @@ namespace Diplodocus.Controllers
             return View();
         }
 
-        // GET: Login
+        // GET: Inscription
         public ActionResult Inscription()
         {
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName");
             return View();
         }
 
-
+        // GET: Contact
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Autherize(Diplodocus.ViewModels.User userModel)
@@ -41,8 +47,27 @@ namespace Diplodocus.Controllers
                     var userDetailsManager = db.Managers.Where(x => x.Address == userModel.Email && x.Password == userModel.Password).FirstOrDefault();
                     if (userDetailsManager == null)
                     {
-                        userModel.LoginErrorMessage = "Mauvais login ou mot de passe";
-                        return View("Login", userModel);
+                        var userDetailsTeacher = db.Teachers.Where(x => x.Address == userModel.Email && x.Password == userModel.Password).FirstOrDefault();
+                        if (userDetailsTeacher == null)
+                        {
+                            userModel.LoginErrorMessage = "Mauvais login ou mot de passe";
+                            return View("Login", userModel);
+                        }
+                        else
+                        {
+                            // METTRE LES INFOS DU TEACHER
+                            Session["TeacherId"] = userDetailsTeacher.IdUser;
+                            Session["UserId"] = userDetailsTeacher.IdUser;
+                            Session["TeacherFirstName"] = userDetailsTeacher.FirstName;
+                            Session["TeacherLastName"] = userDetailsTeacher.LastName;
+                            Session["TeacherPhoneNumber"] = userDetailsTeacher.PhoneNumber;
+                            Session["TeacherAddressEmail"] = userDetailsTeacher.Address;
+                            Session["TeacherPassword"] = userDetailsTeacher.Password;
+                            Session["UserType"] = userDetailsTeacher.GetType();
+
+                            return RedirectToAction("TeacherStart", "Start");
+                        }
+
                     }
                     else
                     {
@@ -70,10 +95,64 @@ namespace Diplodocus.Controllers
                     Session["StudentAddressEmail"] = userDetailsStudent.AddressMail;
                     Session["StudentPassword"] = userDetailsStudent.Password;
                     Session["UserType"] = userDetailsStudent.GetType();
+                    Session["GradeId"] = userDetailsStudent.GradeIdGrade;
 
                     return RedirectToAction("StudentStart", "Start");
                 }
 
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddStudent(Diplodocus.ViewModels.User userModel)
+        {
+            using (MyContext db = new MyContext())
+            {
+                // CHECK EXIST
+                if (db.Students.Any(x => x.AddressMail == userModel.Email) || db.Teachers.Any(x => x.Address == userModel.Email) || db.Managers.Any(x => x.Address == userModel.Email))
+                {
+                    ViewBag.LoginErrorMessage = "problème email already use";
+                    return RedirectToAction("Inscription", "Users");
+                }
+                // CHEK EMAIL
+                if (!IsValidEmail(userModel.Email))
+                {
+                    ViewBag.LoginErrorMessage = "problème email invalid";
+                    return RedirectToAction("Inscription", "Users");
+                }
+                // CHECK PASSWORD
+                if (userModel.Password != userModel.ConfirmPassword)
+                {
+                    ViewBag.LoginErrorMessage = "problème mdp";
+                    return RedirectToAction("Inscription", "Users");
+                }
+                // CHECK FORM COMPLETE
+                if (userModel.Password == null || userModel.FirstName == null || userModel.LastName == null || userModel.Email == null || userModel.PhoneNumber == null)
+                {
+                    ViewBag.LoginErrorMessage = "problème champs";
+                    return RedirectToAction("Inscription", "Users");
+                }
+                //CHECK PHONENUMBER
+                /*if (!IsPhoneNumber(userModel.PhoneNumber))
+                {
+                    ViewBag.LoginErrorMessage = "problème email invalid";
+                    return RedirectToAction("Inscription", "Users", userModel);
+                }*/
+                Student student = new Student
+                {
+                    AddressMail = userModel.Email,
+                    FirstName = userModel.FirstName,
+                    LastName = userModel.LastName,
+                    PhoneNumber = userModel.PhoneNumber,
+                    Password = userModel.Password,
+                    GradeIdGrade = userModel.GradeIdGrade
+                };
+                db.Students.Add(student);
+                db.SaveChanges();
+                ModelState.Clear();
+                ViewBag.SuccesMessage = "Inscription réussie";
+                ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
+                return RedirectToAction("Login", "Users");
             }
         }
 
@@ -85,7 +164,7 @@ namespace Diplodocus.Controllers
                 PhoneNumber = userModel.PhoneNumber,
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName,
-                Email = userModel.Email,
+                Email = userModel.Email
             };
             return View("Gestion", userModelCo);
         }
@@ -101,6 +180,7 @@ namespace Diplodocus.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
             return View(student);
         }
 
@@ -118,9 +198,23 @@ namespace Diplodocus.Controllers
             return View(manager);
         }
 
+        public async Task<ActionResult> GestionTeacher(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Teacher teacher = await db.Teachers.FindAsync(id);
+            if (teacher == null)
+            {
+                return HttpNotFound();
+            }
+            return View(teacher);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditStudent([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password")] Student student)
+        public async Task<ActionResult> EditStudent([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password,GradeIdGrade")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -133,6 +227,8 @@ namespace Diplodocus.Controllers
                 Session["StudentPhoneNumber"] = student.PhoneNumber;
                 Session["StudentAddressEmail"] = student.AddressMail;
                 Session["StudentPassword"] = student.Password;
+                ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
+                Session["GradeId"] = student.GradeIdGrade;
                 return RedirectToAction("StudentStart", "Start");
             }
             return View(student);
@@ -158,11 +254,102 @@ namespace Diplodocus.Controllers
             return View(manager);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditTeacher([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber,Password")] Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(teacher).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                Session["TeacherId"] = teacher.IdUser;
+                Session["UserId"] = teacher.IdUser;
+                Session["TeacherFirstName"] = teacher.FirstName;
+                Session["TeacherLastName"] = teacher.LastName;
+                Session["TeacherPhoneNumber"] = teacher.PhoneNumber;
+                Session["TeacherAddressEmail"] = teacher.Address;
+                Session["TeacherPassword"] = teacher.Password;
+                return RedirectToAction("TeacherStart", "Start");
+            }
+            return View(teacher);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> NewGrade([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password,GradeIdGrade")] int idGrade)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(new Student
+                {
+                    AddressMail = Session["StudentAddressEmail"].ToString(),
+                    FirstName = Session["StudentFirstName"].ToString(),
+                    LastName = Session["StudentLastName"].ToString(),
+                    PhoneNumber = Session["StudentPhoneNumber"].ToString(),
+                    Password = Session["StudentPassword"].ToString(),
+                    GradeIdGrade = idGrade
+                }
+
+                ).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditPassword([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password,GradeIdGrade")]Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(new Student
+                {
+                    Password = student.Password
+                }
+
+                ).State = EntityState.Modified;
+                // MDP CHANGER
+                await db.SaveChangesAsync();
+                return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                // MDP NON CHANGER
+                return RedirectToAction("Login", "Users");
+            }
+        }
+
         public ActionResult Logout()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             int userId = (int)Session["UserId"];
             Session.Abandon();
             return RedirectToAction("Login", "Users");
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool IsPhoneNumber(string number)
+        {
+            return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
         }
 
     }

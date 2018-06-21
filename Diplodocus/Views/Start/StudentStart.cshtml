@@ -10,25 +10,12 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="~/Content/style1.css" />
     <meta name="viewport" content="width=device-width" />
     <title>Student menu</title>
 </head>
 <body>
-    <p>
-        Vous etes Etudiant :
-        <br />
-        StudentId => @Session["UserId"]
-        <br />
-        StudentFirstName => @Session["StudentFirstName"]
-        <br />
-        StudentLastName => @Session["StudentLastName"]
-        <br />
-        StudentPhoneNumber => @Session["StudentPhoneNumber"]
-        <br />
-        StudentAddressEmail => @Session["StudentAddressEmail"]
-        <br />
-        UserType => @Session["UserType"]
-    </p>
-    @Html.ActionLink("Simuler vos notes", "Index", "Simulations", new { id = Session["UserId"] }, new { @class = "btn btn-primary" })
+    <br /><br /><br /><br /><br /><br /><br /><br />
+    @Html.ActionLink("Simuler vos notes", "Index", "Simulations", new { id = Session["UserId"] }, new { @class = "btn btn-lg btn-success btn-block", style = "width:200px" })
 </body>
 </html>

@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201806172228342_25.Designer.cs">
       <DependentUpon>201806172228342_25.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806210755283_27.cs" />
+    <Compile Include="Migrations\201806210755283_27.Designer.cs">
+      <DependentUpon>201806210755283_27.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -265,6 +269,17 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pictures\ecole-32x32.png" />
+    <Content Include="Pictures\email-32x32.png" />
+    <Content Include="Pictures\lock-32x32.png" />
+    <Content Include="Pictures\logo-accueil.png" />
+    <Content Include="Pictures\logo.png" />
+    <Content Include="Pictures\mail-32x32.png" />
+    <Content Include="Pictures\name-32x32.png" />
+    <Content Include="Pictures\off-32x32.png" />
+    <Content Include="Pictures\profil-32x32.png" />
+    <Content Include="Pictures\tel-32x32.png" />
+    <Content Include="Pictures\wallpaper.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -364,6 +379,8 @@
     <Content Include="Views\Simulations\ResultatRattrapage.cshtml" />
     <Content Include="Views\Simulations\ResultatSimulation.cshtml" />
     <Content Include="Views\SchoolSubjects\CreateMark.cshtml" />
+    <Content Include="Views\Users\GestionTeacher.cshtml" />
+    <Content Include="Views\Users\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806172228342_25.resx">
       <DependentUpon>201806172228342_25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806210755283_27.resx">
+      <DependentUpon>201806210755283_27.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
