@@ -242,6 +242,10 @@
     <Compile Include="Migrations\201806210755283_27.Designer.cs">
       <DependentUpon>201806210755283_27.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806212144189_SubjectMarksIntToDouble.cs" />
+    <Compile Include="Migrations\201806212144189_SubjectMarksIntToDouble.Designer.cs">
+      <DependentUpon>201806212144189_SubjectMarksIntToDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -457,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806210755283_27.resx">
       <DependentUpon>201806210755283_27.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806212144189_SubjectMarksIntToDouble.resx">
+      <DependentUpon>201806212144189_SubjectMarksIntToDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

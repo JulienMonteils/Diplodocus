@@ -11,7 +11,7 @@
 
         [Key]
         public int IdMark { get; set; }
-        public Nullable<int> Mark { get; set; }
+        public Nullable<double> Mark { get; set; }
         public virtual Student Student { get; set; }
         public virtual SchoolSubject SchoolSubject { get; set; }
         public int SchoolSubjectIdSchoolSubject { get; set; }
