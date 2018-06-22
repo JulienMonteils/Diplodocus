@@ -12,8 +12,8 @@ namespace Diplodocus.ViewModels
         public Grade Grade { get; set; }
         public IEnumerable<SchoolSubject> SchoolSubjects { get; set; }
         public List<SchoolSubjectMark> SchoolSubjectMarks { get; set; }
-        public List<int> Notes { get; set; }
-        public Dictionary<SchoolSubject, int> TestNotes { get; set; }
+        public List<double> Notes { get; set; }
+        public Dictionary<SchoolSubject, double> TestNotes { get; set; }
         public List<SchoolSubject> MatieresRattrapage { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Diplodocus.Controllers
     {
         private MyContext db = new MyContext();
         // GET: Simulations
-        public ActionResult Index(int id)
+        public ActionResult Index(double id)
         {
             var viewModel = new SimulationFormViewModel
             {
@@ -20,8 +20,8 @@ namespace Diplodocus.Controllers
                 Grade = db.Grades.SingleOrDefault(c => c.StudentsList.FirstOrDefault(s => s.IdUser == id).IdUser == id),
                 SchoolSubjects = db.Grades.SingleOrDefault(c => c.IdGrade == db.Grades.FirstOrDefault(d => d.StudentsList.FirstOrDefault(s => s.IdUser == id).IdUser == id).IdGrade).SchoolSubjectsList.ToList(),
                 SchoolSubjectMarks = new List<SchoolSubjectMark>(),
-                TestNotes = new Dictionary<SchoolSubject, int>(),
-                Notes = new List<int>()
+                TestNotes = new Dictionary<SchoolSubject, double>(),
+                Notes = new List<double>()
 
             };
 
@@ -84,7 +84,7 @@ namespace Diplodocus.Controllers
 
             // --- 
 
-            if (viewModel.Notes != null)
+            if (viewModel.Notes != null && isMarkCorrect(viewModel))
             {
                 var moyenne = viewModel.Notes.Average();
                 var matiereS1 = new List<SchoolSubject>();
@@ -121,7 +121,7 @@ namespace Diplodocus.Controllers
                     }
                 }
 
-                var lesNotes = new Dictionary<SchoolSubject, int>();
+                var lesNotes = new Dictionary<SchoolSubject, double>();
                 var i = 0;
                 foreach (var subject in lesSujetsSynchro)
                 {
@@ -131,11 +131,11 @@ namespace Diplodocus.Controllers
 
 
 
-                var notesMoyenneS1 = new List<int>();
-                var notesMoyenneS2 = new List<int>();
+                var notesMoyenneS1 = new List<double>();
+                var notesMoyenneS2 = new List<double>();
 
 
-                foreach (KeyValuePair<SchoolSubject, int> couple in lesNotes)
+                foreach (KeyValuePair<SchoolSubject, double> couple in lesNotes)
                 {
                     if (couple.Key.Semester == 1)
                     {
@@ -152,10 +152,10 @@ namespace Diplodocus.Controllers
 
                 var moyenneS1 = notesMoyenneS1.Average();
                 var moyenneS2 = notesMoyenneS2.Average();
-                var moyenneS1Coef = new List<int>();
-                var moyenneS2Coef = new List<int>();
-                var moyenneGAvecCoef = new List<int>();
-                foreach(KeyValuePair<SchoolSubject,int> couple in lesNotes)
+                var moyenneS1Coef = new List<double>();
+                var moyenneS2Coef = new List<double>();
+                var moyenneGAvecCoef = new List<double>();
+                foreach(KeyValuePair<SchoolSubject,double> couple in lesNotes)
                 {
                     for(var j = 0; j < couple.Key.Coef; j++)
                     {
@@ -195,8 +195,8 @@ namespace Diplodocus.Controllers
                 };
 
                 //On tente d'enregistrer les resultat :
-                int idtest;
-                foreach (KeyValuePair<SchoolSubject, int> couple in lesNotes)
+                double idtest;
+                foreach (KeyValuePair<SchoolSubject, double> couple in lesNotes)
                 {
                     if (VerifSiNoteExisteDeja(couple.Key, viewModelResultat.Student))
                     {
@@ -213,14 +213,21 @@ namespace Diplodocus.Controllers
 
                 db.SaveChanges();
 
-                //viewModelResultat.RattrapageVM.MatiereRattrapables = new Dictionary<Subject, int>();
+                //viewModelResultat.RattrapageVM.MatiereRattrapables = new Dictionary<Subject, double>();
            
             return View(viewModelResultat);
+            }
+            else
+            {
+                if(isMarkCorrect(viewModel) == false)
+                {
+                    return RedirectToAction("Index", "Simulations", new { id = viewModel.Student.IdUser });
+                }
             }
             return View();
         }
 
-        public ActionResult RetourHome(int id)
+        public ActionResult RetourHome(double id)
         {
             return RedirectToAction("StudentStart", "Start", new { id = id });
         }
@@ -242,9 +249,9 @@ namespace Diplodocus.Controllers
             return drap;
         }
 
-        public int getSchoolSubjectMarkBySubjectId(SchoolSubject uneMatiere, Student unStudent)
+        public double getSchoolSubjectMarkBySubjectId(SchoolSubject uneMatiere, Student unStudent)
         {
-            int SSMid = 0;
+            double SSMid = 0;
             foreach (var subjectMark in uneMatiere.SchoolSubjectMark)
             {
                 if (subjectMark.Student.Equals(unStudent))
@@ -257,7 +264,7 @@ namespace Diplodocus.Controllers
         }
 
         //Rattrapages -----
-        public ActionResult IndexRattrapage(int id)
+        public ActionResult IndexRattrapage(double id)
         {
             var viewModel = new SimulationFormViewModel
             {
@@ -265,8 +272,8 @@ namespace Diplodocus.Controllers
                 Grade = db.Grades.SingleOrDefault(c => c.StudentsList.FirstOrDefault(s => s.IdUser == id).IdUser == id),
                 SchoolSubjects = db.Grades.SingleOrDefault(c => c.IdGrade == db.Grades.FirstOrDefault(d => d.StudentsList.FirstOrDefault(s => s.IdUser == id).IdUser == id).IdGrade).SchoolSubjectsList.ToList(),
                 SchoolSubjectMarks = new List<SchoolSubjectMark>(),
-                TestNotes = new Dictionary<SchoolSubject, int>(),
-                Notes = new List<int>(),
+                TestNotes = new Dictionary<SchoolSubject, double>(),
+                Notes = new List<double>(),
                 MatieresRattrapage = new List<SchoolSubject>()
 
             };
@@ -314,136 +321,159 @@ namespace Diplodocus.Controllers
 
 
             // --- 
-            var moyenne = viewModel.Notes.Average();
-            var matiereS1 = new List<SchoolSubject>();
-            var matiereS2 = new List<SchoolSubject>();
-            var lesSujets = db.Grades.SingleOrDefault(c => c.IdGrade == viewModel.Grade.IdGrade).SchoolSubjectsList;
-            var lesSujetsSynchro = new List<SchoolSubject>();
-            foreach (var subject in lesSujets)
+            if (isMarkCorrect(viewModel))
             {
-                if (subject.Semester == 1)
+                var moyenne = viewModel.Notes.Average();
+                var matiereS1 = new List<SchoolSubject>();
+                var matiereS2 = new List<SchoolSubject>();
+                var lesSujets = db.Grades.SingleOrDefault(c => c.IdGrade == viewModel.Grade.IdGrade).SchoolSubjectsList;
+                var lesSujetsSynchro = new List<SchoolSubject>();
+                foreach (var subject in lesSujets)
                 {
-                    lesSujetsSynchro.Add(subject);
+                    if (subject.Semester == 1)
+                    {
+                        lesSujetsSynchro.Add(subject);
+                    }
                 }
-            }
-            foreach (var subject in lesSujets)
-            {
-                if (subject.Semester == 2)
-                {
-                    lesSujetsSynchro.Add(subject);
-                }
-            }
-
-            foreach (var subject in lesSujetsSynchro)
-            {
-                if (subject.Semester == 1)
-                {
-                    matiereS1.Add(subject);
-                }
-                else
+                foreach (var subject in lesSujets)
                 {
                     if (subject.Semester == 2)
                     {
-                        matiereS2.Add(subject);
+                        lesSujetsSynchro.Add(subject);
                     }
                 }
-            }
 
-            var lesNotes = new Dictionary<SchoolSubject, int>();
-            var i = 0;
-            foreach (var subject in lesSujetsSynchro)
-            {
-                lesNotes.Add(subject, viewModel.Notes[i]);
-                i = i + 1;
-            }
-
-
-
-            var notesMoyenneS1 = new List<int>();
-            var notesMoyenneS2 = new List<int>();
-
-
-            foreach (KeyValuePair<SchoolSubject, int> couple in lesNotes)
-            {
-                if (couple.Key.Semester == 1)
+                foreach (var subject in lesSujetsSynchro)
                 {
-                    notesMoyenneS1.Add(couple.Value);
-                }
-                else
-                {
-                    if (couple.Key.Semester == 2)
+                    if (subject.Semester == 1)
                     {
-                        notesMoyenneS2.Add(couple.Value);
+                        matiereS1.Add(subject);
+                    }
+                    else
+                    {
+                        if (subject.Semester == 2)
+                        {
+                            matiereS2.Add(subject);
+                        }
                     }
                 }
-            }
 
-            var moyenneS1 = notesMoyenneS1.Average();
-            var moyenneS2 = notesMoyenneS2.Average();
-
-            var moyenneS1Coef = new List<int>();
-            var moyenneS2Coef = new List<int>();
-            var moyenneGAvecCoef = new List<int>();
-            foreach (KeyValuePair<SchoolSubject, int> couple in lesNotes)
-            {
-                for (var j = 0; j < couple.Key.Coef; j++)
+                var lesNotes = new Dictionary<SchoolSubject, double>();
+                var i = 0;
+                foreach (var subject in lesSujetsSynchro)
                 {
-                    moyenneGAvecCoef.Add(couple.Value);
+                    lesNotes.Add(subject, viewModel.Notes[i]);
+                    i = i + 1;
                 }
-                if (couple.Key.Semester == 1)
+
+
+
+                var notesMoyenneS1 = new List<double>();
+                var notesMoyenneS2 = new List<double>();
+
+
+                foreach (KeyValuePair<SchoolSubject, double> couple in lesNotes)
+                {
+                    if (couple.Key.Semester == 1)
+                    {
+                        notesMoyenneS1.Add(couple.Value);
+                    }
+                    else
+                    {
+                        if (couple.Key.Semester == 2)
+                        {
+                            notesMoyenneS2.Add(couple.Value);
+                        }
+                    }
+                }
+
+                var moyenneS1 = notesMoyenneS1.Average();
+                var moyenneS2 = notesMoyenneS2.Average();
+
+                var moyenneS1Coef = new List<double>();
+                var moyenneS2Coef = new List<double>();
+                var moyenneGAvecCoef = new List<double>();
+                foreach (KeyValuePair<SchoolSubject, double> couple in lesNotes)
                 {
                     for (var j = 0; j < couple.Key.Coef; j++)
                     {
-                        moyenneS1Coef.Add(couple.Value);
+                        moyenneGAvecCoef.Add(couple.Value);
                     }
-                }
-                else
-                {
-                    for (var j = 0; j < couple.Key.Coef; j++)
+                    if (couple.Key.Semester == 1)
                     {
-                        moyenneS2Coef.Add(couple.Value);
+                        for (var j = 0; j < couple.Key.Coef; j++)
+                        {
+                            moyenneS1Coef.Add(couple.Value);
+                        }
+                    }
+                    else
+                    {
+                        for (var j = 0; j < couple.Key.Coef; j++)
+                        {
+                            moyenneS2Coef.Add(couple.Value);
+                        }
                     }
                 }
+
+
+
+                var viewModelResultat = new SimulationResultViewModel
+                {
+                    Student = db.Students.SingleOrDefault(c => c.IdUser == viewModel.Student.IdUser),
+                    Grade = db.Grades.SingleOrDefault(c => c.IdGrade == viewModel.Grade.IdGrade),
+                    Moyenne = Math.Round(moyenneGAvecCoef.Average(), 2),
+                    MoyenneS1 = Math.Round(moyenneS1Coef.Average(), 2),
+                    MoyenneS2 = Math.Round(moyenneS2Coef.Average(), 2),
+                    LesNotes = lesNotes,
+                    Subjects = lesSujets,
+                    matieresRattrapage = new List<SchoolSubject>()
+                    //RattrapageVM = new RattrapageViewModel(),
+
+                };
+
+                //On tente d'enregistrer les resultat :
+                double idtest;
+                foreach (KeyValuePair<SchoolSubject, double> couple in lesNotes)
+                {
+                    if (VerifSiNoteExisteDeja(couple.Key, viewModelResultat.Student))
+                    {
+                        idtest = getSchoolSubjectMarkBySubjectId(couple.Key, viewModelResultat.Student);
+                        db.SchoolSubjectMarks.SingleOrDefault(c => c.IdMark == idtest).Mark = couple.Value;
+                        //db.SchoolSubjects.SingleOrDefault(c => c.IdSubject == couple.Key.IdSubject).SchoolSubjectMarks.Add(new SchoolSubjectMark { Mark = couple.Value, Student = viewModelResultat.Student });
+                    }
+                    else
+                    {
+                        db.SchoolSubjects.SingleOrDefault(c => c.IdSubject == couple.Key.IdSubject).SchoolSubjectMark.Add(new SchoolSubjectMark { Mark = couple.Value, Student = viewModelResultat.Student });
+                    }
+
+                }
+
+                db.SaveChanges();
+
+                //viewModelResultat.RattrapageVM.MatiereRattrapables = new Dictionary<Subject, double>();
+
+                return View(viewModelResultat);
+            }
+            else
+            {
+                return RedirectToAction("IndexRattrapage", "Simulations", new { id = viewModel.Student.IdUser });
+            }
+        }
+
+
+        public bool isMarkCorrect(SimulationFormViewModel viewModel)
+        {
+            bool drap = true;
+
+            foreach(var mark in viewModel.Notes)
+            {
+                if(mark < 0 || mark > 20)
+                {
+                    drap = false;
+                }
             }
 
-
-
-            var viewModelResultat = new SimulationResultViewModel
-            {
-                Student = db.Students.SingleOrDefault(c => c.IdUser == viewModel.Student.IdUser),
-                Grade = db.Grades.SingleOrDefault(c => c.IdGrade == viewModel.Grade.IdGrade),
-                Moyenne = Math.Round(moyenneGAvecCoef.Average(),2),
-                MoyenneS1 = Math.Round(moyenneS1Coef.Average(),2),
-                MoyenneS2 = Math.Round(moyenneS2Coef.Average(),2),
-                LesNotes = lesNotes,
-                Subjects = lesSujets,
-                matieresRattrapage = new List<SchoolSubject>()
-                //RattrapageVM = new RattrapageViewModel(),
-
-            };
-
-            //On tente d'enregistrer les resultat :
-            int idtest;
-            foreach (KeyValuePair<SchoolSubject, int> couple in lesNotes)
-            {
-                if (VerifSiNoteExisteDeja(couple.Key, viewModelResultat.Student))
-                {
-                    idtest = getSchoolSubjectMarkBySubjectId(couple.Key, viewModelResultat.Student);
-                    db.SchoolSubjectMarks.SingleOrDefault(c => c.IdMark == idtest).Mark = couple.Value;
-                    //db.SchoolSubjects.SingleOrDefault(c => c.IdSubject == couple.Key.IdSubject).SchoolSubjectMarks.Add(new SchoolSubjectMark { Mark = couple.Value, Student = viewModelResultat.Student });
-                }
-                else
-                {
-                    db.SchoolSubjects.SingleOrDefault(c => c.IdSubject == couple.Key.IdSubject).SchoolSubjectMark.Add(new SchoolSubjectMark { Mark = couple.Value, Student = viewModelResultat.Student });
-                }
-
-            }
-
-            db.SaveChanges();
-
-            //viewModelResultat.RattrapageVM.MatiereRattrapables = new Dictionary<Subject, int>();
-
-            return View(viewModelResultat);
+            return drap;
         }
 
     }
