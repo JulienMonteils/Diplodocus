@@ -18,87 +18,90 @@
     <title>Index</title>
 </head>
 <body>
-    <br />
-    <br />
-    <h2>Rattrapage pour fillière : @Model.Grade.gradeName</h2>
 
 
-    <!-- à mettre dans textboxfor :  m.SchoolSubjectMarks.ElementAt(1).Mark-->
-    @using (Html.BeginForm("ResultatRattrapage", "Simulations"))
-    {
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
+        <h2>Rattrapage pour fillière : @Model.Grade.gradeName</h2>
 
-        <div class="form-horizontal">
-            @Html.ValidationSummary(true, "Please fix the following errors.")
-            @{
-                <h2>Semestre 1</h2>
-                var i = 0;
-                foreach (var subject in Model.SchoolSubjects)
-                {
-                    if (subject.Semester == 1)
+
+        <!-- à mettre dans textboxfor :  m.SchoolSubjectMarks.ElementAt(1).Mark-->
+        @using (Html.BeginForm("ResultatRattrapage", "Simulations"))
+        {
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "Please fix the following errors.")
+                @{
+                    <h2>Semestre 1</h2>
+                    var i = 0;
+                    foreach (var subject in Model.SchoolSubjects)
                     {
-                        if (Model.Notes[i] < 10)
+                        if (subject.Semester == 1)
                         {
-                            <div class="form-group">
-                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-3">
-                                    @Html.EditorFor(m => m.Notes[i], new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(m => m.Notes[i])
+                            if (Model.Notes[i] < 10)
+                            {
+                                <div class="form-group">
+                                    @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(m => m.Notes[i], new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Notes[i])
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="form-group">
-                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-3">
-                                    @Html.EditorFor(m => m.Notes[i], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                    @Html.ValidationMessageFor(m => m.Notes[i])
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(m => m.Notes[i], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(m => m.Notes[i])
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         }
+                        i = i + 1;
                     }
-                    i = i + 1;
-                }
-                <h2>Semestre 2</h2>
-                var j = 0;
-                foreach (var subject in Model.SchoolSubjects)
-                {
-
-                    if (subject.Semester == 2)
+                    <h2>Semestre 2</h2>
+                    var j = 0;
+                    foreach (var subject in Model.SchoolSubjects)
                     {
-                        if (Model.Notes[j] < 10)
+
+                        if (subject.Semester == 2)
                         {
-                            <div class="form-group">
-                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-3">
-                                    @Html.EditorFor(m => m.Notes[j], new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(m => m.Notes[j])
+                            if (Model.Notes[j] < 10)
+                            {
+                                <div class="form-group">
+                                    @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(m => m.Notes[j], new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.Notes[j])
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="form-group">
-                                @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-3">
-                                    @Html.EditorFor(m => m.Notes[j], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                    @Html.ValidationMessageFor(m => m.Notes[j])
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    @Html.Label(subject.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(m => m.Notes[j], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                        @Html.ValidationMessageFor(m => m.Notes[j])
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         }
+                        j = j + 1;
                     }
-                    j = j + 1;
                 }
-            }
-            @Html.HiddenFor(m => m.Grade.IdGrade)
-            @Html.HiddenFor(m => m.Student.IdUser)
-            @Html.AntiForgeryToken()
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Lancer la simulation</button>
+                @Html.HiddenFor(m => m.Grade.IdGrade)
+                @Html.HiddenFor(m => m.Student.IdUser)
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary">Lancer la simulation</button>
+                    </div>
                 </div>
             </div>
+        }
+
         </div>
-    }
 </body>
 </html>

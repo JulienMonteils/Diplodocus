@@ -17,7 +17,8 @@
     <title>Details</title>
 </head>
 <body>
-    <div>
+
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
         <h4>Student</h4>
         <hr />
         <dl class="dl-horizontal">
@@ -70,10 +71,11 @@
             </dd>
 
         </dl>
+
+        <p>
+            @Html.ActionLink("Modifier", "Edit", new { id = Model.IdUser }) |
+            @Html.ActionLink("Retour", "Index")
+        </p>
     </div>
-    <p>
-        @Html.ActionLink("Modifier", "Edit", new { id = Model.IdUser }) |
-        @Html.ActionLink("Retour", "Index")
-    </p>
 </body>
 </html>

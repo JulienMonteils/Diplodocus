@@ -16,162 +16,164 @@
     <title>ResultatSimulation</title>
 </head>
 <body>
-    <h2>ResultatSimulation</h2>
-    <h3>@Model.Student.IdUser - @Model.Student.LastName @Model.Student.FirstName</h3>
-    <h2>Moyenne générale : @Model.Moyenne</h2>
 
-    <h1>Semestre 1</h1>
-    <h3>Moyenne pour semestre 1 est de : @Model.MoyenneS1</h3>
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
 
-    @if (@Model.MoyenneS1 >= 10)
-    {
-        <p style="color:yellowgreen">Votre moyenne est supérieur ou égale à 10.</p>
-    }
-    else
-    {
-        <p style="color:red"> Votre moyenne est inférieure à 10 pour le premier semestre.</p>
-    }
-    @{
-        var rattrapage = false;
-        var unAnDansLeC = false;
-    }
-    <table class="table">
-        <tr>
-            <th>Matière</th>
-            <th>Note</th>
-            <th>Coeficient</th>
-            <th>Commentaire</th>
-        </tr>
-        @foreach (var subject in Model.Subjects)
+        <h2>ResultatSimulation</h2>
+        <h3>@Model.Student.IdUser - @Model.Student.LastName @Model.Student.FirstName</h3>
+        <h2>Moyenne générale : @Model.Moyenne</h2>
+
+        <h1>Semestre 1</h1>
+        <h3>Moyenne pour semestre 1 est de : @Model.MoyenneS1</h3>
+
+        @if (@Model.MoyenneS1 >= 10)
         {
-            <tr>
-                @if (subject.Semester == 1)
-                {
-                    <td>@subject.SubjectName</td>
-                    <td>@Model.LesNotes[subject]</td>
-                    <td>@subject.Coef</td>
-                    if (Model.LesNotes[subject] < subject.SubjectMarkFloor)
-                    {
-                        if (subject.Rattrapable == true)
-                        {
-                            <td style="color:orange">Vous devez repassez cette matière au rattrapage.</td>
-                            rattrapage = true;
-                            //Model.RattrapageVM.MatiereRattrapables.Add(subject, Model.LesNotes[subject]);
-                            Model.matieresRattrapage.Add(subject);
-                        }
-                        else
-                        {
-                            <td style="color:red">Vous êtes éliminé. @subject.SubjectName n'est pas rattrapable.</td>
-                            unAnDansLeC = true;
-                        }
-
-                    }
-                    else
-                    {
-                        if (Model.MoyenneS1 < 10 && Model.LesNotes[subject] < 10 && subject.Rattrapable == true)
-                        {
-                            rattrapage = true;
-                            //Model.RattrapageVM.MatiereRattrapables.Add(subject, Model.LesNotes[subject]);
-                            Model.matieresRattrapage.Add(subject);
-                            <td style="color:orange">Vous pouvez rattraper cette matière.</td>
-                        }
-                        else
-                        {
-
-                            <td style="color:yellowgreen">Vous avez validé la matière.</td>
-                        }
-                    }
-                }
-            </tr>
-        }
-    </table>
-    <h1>Semestre 2</h1>
-    <h3>Moyenne pour semestre 2 est de : @Model.MoyenneS2</h3>
-
-    @if (@Model.MoyenneS2 >= 10)
-    {
-        <p style="color:yellowgreen">Votre moyenne est supérieur ou égale à 10.</p>
-    }
-    else
-    {
-        <p style="color:red"> Votre moyenne est inférieure à 10 pour le second semestre.</p>
-    }
-
-    <table class="table">
-        <tr>
-            <th>Matière</th>
-            <th>Note</th>
-            <th>Coeficient</th>
-            <th>Commentaire</th>
-        </tr>
-
-        @foreach (var subject in Model.Subjects)
-        {
-            <tr>
-                @if (subject.Semester == 2)
-                {
-                    <td>@subject.SubjectName</td>
-                    <td>@Model.LesNotes[subject]</td>
-                    <td>@subject.Coef</td>
-                    if (Model.LesNotes[subject] < subject.SubjectMarkFloor)
-                    {
-                        if (subject.Rattrapable == true)
-                        {
-                            <td style="color:orange">Vous devez repassez cette matière au rattrapage.</td>
-                            rattrapage = true;
-                            Model.matieresRattrapage.Add(subject);
-
-                        }
-                        else
-                        {
-                            <td style="color:red">Vous êtes éliminé. @subject.SubjectName n'est pas rattrapable.</td>
-                            unAnDansLeC = true;
-                        }
-
-                    }
-                    else
-                    {
-                        if (Model.MoyenneS2 < 10 && Model.LesNotes[subject] < 10 && subject.Rattrapable == true)
-                        {
-                            <td style="color:orange">Vous pouvez rattraper cette matière.</td>
-                            rattrapage = true;
-                            Model.matieresRattrapage.Add(subject);
-                            //Model.RattrapageVM.MatiereRattrapables.Add(subject, Model.LesNotes[subject]);
-
-
-                        }
-                        else
-                        {
-                            <td style="color:yellowgreen">Vous avez validé la matière.</td>
-                        }
-
-                    }
-                }
-            </tr>
-        }
-    </table>
-
-    @if (rattrapage == false && unAnDansLeC == false)
-    {
-        <p>Auncun rattrapage.</p>
-    }
-    else
-    {
-        if (rattrapage == true && unAnDansLeC == false)
-        {
-            @Html.ActionLink("Rattrapages", "IndexRattrapage", "Simulations", new { id = Model.Student.IdUser }, new { @class = "btn btn-primary" })
+            <p style="color:yellowgreen">Votre moyenne est supérieur ou égale à 10.</p>
         }
         else
         {
-            <p>Vous êtes éliminé !</p>
+            <p style="color:red"> Votre moyenne est inférieure à 10 pour le premier semestre.</p>
+        }
+        @{
+            var rattrapage = false;
+            var unAnDansLeC = false;
+        }
+        <table class="table">
+            <tr>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Coeficient</th>
+                <th>Commentaire</th>
+            </tr>
+            @foreach (var subject in Model.Subjects)
+            {
+                <tr>
+                    @if (subject.Semester == 1)
+                    {
+                        <td>@subject.SubjectName</td>
+                        <td>@Model.LesNotes[subject]</td>
+                        <td>@subject.Coef</td>
+                        if (Model.LesNotes[subject] < subject.SubjectMarkFloor)
+                        {
+                            if (subject.Rattrapable == true)
+                            {
+                                <td style="color:orange">Vous devez repassez cette matière au rattrapage.</td>
+                                rattrapage = true;
+                                //Model.RattrapageVM.MatiereRattrapables.Add(subject, Model.LesNotes[subject]);
+                                Model.matieresRattrapage.Add(subject);
+                            }
+                            else
+                            {
+                                <td style="color:red">Vous êtes éliminé. @subject.SubjectName n'est pas rattrapable.</td>
+                                unAnDansLeC = true;
+                            }
+
+                        }
+                        else
+                        {
+                            if (Model.MoyenneS1 < 10 && Model.LesNotes[subject] < 10 && subject.Rattrapable == true)
+                            {
+                                rattrapage = true;
+                                //Model.RattrapageVM.MatiereRattrapables.Add(subject, Model.LesNotes[subject]);
+                                Model.matieresRattrapage.Add(subject);
+                                <td style="color:orange">Vous pouvez rattraper cette matière.</td>
+                            }
+                            else
+                            {
+
+                                <td style="color:yellowgreen">Vous avez validé la matière.</td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+        </table>
+        <h1>Semestre 2</h1>
+        <h3>Moyenne pour semestre 2 est de : @Model.MoyenneS2</h3>
+
+        @if (@Model.MoyenneS2 >= 10)
+        {
+            <p style="color:yellowgreen">Votre moyenne est supérieur ou égale à 10.</p>
+        }
+        else
+        {
+            <p style="color:red"> Votre moyenne est inférieure à 10 pour le second semestre.</p>
         }
 
-    }
+        <table class="table">
+            <tr>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Coeficient</th>
+                <th>Commentaire</th>
+            </tr>
 
-    @Html.ActionLink("Retour à l'index", "RetourHome", new { id = @Model.Student.IdUser }, new { @class = "btn btn-primary" })
-    <br />
-    <br />
-    <br />
-    <br />
+            @foreach (var subject in Model.Subjects)
+            {
+                <tr>
+                    @if (subject.Semester == 2)
+                    {
+                        <td>@subject.SubjectName</td>
+                        <td>@Model.LesNotes[subject]</td>
+                        <td>@subject.Coef</td>
+                        if (Model.LesNotes[subject] < subject.SubjectMarkFloor)
+                        {
+                            if (subject.Rattrapable == true)
+                            {
+                                <td style="color:orange">Vous devez repassez cette matière au rattrapage.</td>
+                                rattrapage = true;
+                                Model.matieresRattrapage.Add(subject);
+
+                            }
+                            else
+                            {
+                                <td style="color:red">Vous êtes éliminé. @subject.SubjectName n'est pas rattrapable.</td>
+                                unAnDansLeC = true;
+                            }
+
+                        }
+                        else
+                        {
+                            if (Model.MoyenneS2 < 10 && Model.LesNotes[subject] < 10 && subject.Rattrapable == true)
+                            {
+                                <td style="color:orange">Vous pouvez rattraper cette matière.</td>
+                                rattrapage = true;
+                                Model.matieresRattrapage.Add(subject);
+                                //Model.RattrapageVM.MatiereRattrapables.Add(subject, Model.LesNotes[subject]);
+
+
+                            }
+                            else
+                            {
+                                <td style="color:yellowgreen">Vous avez validé la matière.</td>
+                            }
+
+                        }
+                    }
+                </tr>
+            }
+        </table>
+
+        @if (rattrapage == false && unAnDansLeC == false)
+        {
+            <p>Auncun rattrapage.</p>
+        }
+        else
+        {
+            if (rattrapage == true && unAnDansLeC == false)
+            {
+                @Html.ActionLink("Rattrapages", "IndexRattrapage", "Simulations", new { id = Model.Student.IdUser }, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                <p>Vous êtes éliminé !</p>
+            }
+
+        }
+
+        @Html.ActionLink("Retour à l'index", "RetourHome", new { id = @Model.Student.IdUser }, new { @class = "btn btn-primary" })
+
+        </div>
+
 </body>
 </html>

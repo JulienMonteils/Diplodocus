@@ -16,51 +16,54 @@
     <title>Création d'une matière</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-      
-    <div class="form-horizontal">
-        <h4>SchoolSubject</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <label class="control-label col-md-2">Nom de la matière </label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SubjectName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        @{
-            var selectListFloor = new SelectList(new[]
-                           {
-                                      new{ID="1",Name="1"},
-                                      new{ID="2",Name="2"},
-                                      new{ID="3",Name="3"},
-                                      new{ID="4",Name="4"},
-                                      new{ID="5",Name="5"},
-                                      new{ID="6",Name="6"},
-                                      new{ID="7",Name="7"},
-                                      new{ID="8",Name="8"},
-                                      new{ID="9",Name="9"},
-                                      new{ID="10",Name="10"},
-                                      new{ID="11",Name="11"},
-                                      new{ID="12",Name="12"},
-                                      new{ID="13",Name="13"},
-                                      new{ID="14",Name="14"},
-                                      new{ID="15",Name="15"},
-                                      new{ID="16",Name="16"},
-                                      new{ID="17",Name="17"},
-                                      new{ID="18",Name="18"},
-                                      new{ID="19",Name="19"},
-                                      new{ID="20",Name="20"},
-                                  },
-             "ID", "Name", 1);
-        }
 
-         
-          
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="form-horizontal">
+                <h4>SchoolSubject</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nom de la matière </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SubjectName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @{
+                    var selectListFloor = new SelectList(new[]
+                                   {
+                                          new{ID="1",Name="1"},
+                                          new{ID="2",Name="2"},
+                                          new{ID="3",Name="3"},
+                                          new{ID="4",Name="4"},
+                                          new{ID="5",Name="5"},
+                                          new{ID="6",Name="6"},
+                                          new{ID="7",Name="7"},
+                                          new{ID="8",Name="8"},
+                                          new{ID="9",Name="9"},
+                                          new{ID="10",Name="10"},
+                                          new{ID="11",Name="11"},
+                                          new{ID="12",Name="12"},
+                                          new{ID="13",Name="13"},
+                                          new{ID="14",Name="14"},
+                                          new{ID="15",Name="15"},
+                                          new{ID="16",Name="16"},
+                                          new{ID="17",Name="17"},
+                                          new{ID="18",Name="18"},
+                                          new{ID="19",Name="19"},
+                                          new{ID="20",Name="20"},
+                                      },
+                     "ID", "Name", 1);
+                }
+
+
+
                 <div class="form-group">
                     <label class="control-label col-md-2">Seuil </label>
                     <div class="col-md-10">
@@ -109,10 +112,12 @@
                     </div>
                 </div>
             </div>
-            }
+        }
 
-            <div>
-                @Html.ActionLink("Retour", "Index")
-            </div>
+        <div>
+            @Html.ActionLink("Retour", "Index")
+        </div>
+
+        </div>
 </body>
 </html>

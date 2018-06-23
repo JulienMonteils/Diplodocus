@@ -273,8 +273,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pictures\contact-32x32.png" />
     <Content Include="Pictures\ecole-32x32.png" />
     <Content Include="Pictures\email-32x32.png" />
+    <Content Include="Pictures\home-32x32.png" />
     <Content Include="Pictures\lock-32x32.png" />
     <Content Include="Pictures\logo-accueil.png" />
     <Content Include="Pictures\logo.png" />
@@ -385,6 +387,7 @@
     <Content Include="Views\SchoolSubjects\CreateMark.cshtml" />
     <Content Include="Views\Users\GestionTeacher.cshtml" />
     <Content Include="Views\Users\Contact.cshtml" />
+    <Content Include="Views\Start\TeacherStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

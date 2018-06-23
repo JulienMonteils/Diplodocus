@@ -16,56 +16,60 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-<body background="~/Pictures/wallpaper.jpg" style="color:white">
-    <p><br /></p>
-    <table class="table">
-        <tr>
-            <th>
-                Nom des filière
-            </th>
-            <th>
-                Matières présente dans la fillière
+<body>
 
-            </th>
-            <th>
-                Actions
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
 
-            </th>
-
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <p><br /></p>
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gradeName)
-                </td>
-                <td>
+                <th>
+                    Nom des filière
+                </th>
+                <th>
+                    Matières présente dans la fillière
 
+                </th>
+                <th>
+                    Actions
 
-                    @foreach (var item2 in item.SchoolSubjectsList)
-                    {
+                </th>
 
-                        @Html.DisplayFor(modelItem => item2.SubjectName)<br />
-
-                    }
-
-                </td>
-                <td>
-
-                    @Html.ActionLink("Ajouter une matière", "AddSubject") |
-                    @Html.ActionLink("Modifier", "Edit", new { id = item.IdGrade }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdGrade }) |
-                    @Html.ActionLink("Supprimer", "Delete", new { id = item.IdGrade })
-                </td>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gradeName)
+                    </td>
+                    <td>
 
 
-    <p>
-        @Html.ActionLink("Créer une nouvelle filière", "Create")
-    </p>
+                        @foreach (var item2 in item.SchoolSubjectsList)
+                        {
+
+                            @Html.DisplayFor(modelItem => item2.SubjectName)<br />
+
+                        }
+
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Ajouter une matière", "AddSubject") |
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.IdGrade }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdGrade }) |
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.IdGrade })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+        <p>
+            @Html.ActionLink("Créer une nouvelle filière", "Create")
+        </p>
+    </div>
 </body>
 </html>

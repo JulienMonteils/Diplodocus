@@ -12,34 +12,40 @@
     <title> Edition</title>
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Grade</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.IdGrade)
-    
-            <div class="form-group">
-                <label class="control-label col-md-2">Nom de la filière </label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.gradeName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.gradeName, "", new { @class = "text-danger" })
+
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Grade</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.IdGrade)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nom de la filière </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.gradeName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.gradeName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Retour", "Index")
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Retour", "Index")
-    </div>
+
+        </div>
 </body>
 </html>

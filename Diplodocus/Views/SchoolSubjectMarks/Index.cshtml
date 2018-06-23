@@ -17,49 +17,48 @@
     <title>Index</title>
 </head>
 <body>
-    <p></p>
-    <br />
-    <p>
-        @Html.ActionLink("Ajouter une note", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                Note
-            </th>
-            <th>
-                nom de la matière
-            </th>
 
-            <th>
-                Etudiant
-            </th>
-            <th></th>
-        </tr>
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
+        <h3>@Html.ActionLink("Ajouter une note", "Create")</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    Note
+                </th>
+                <th>
+                    nom de la matière
+                </th>
 
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mark)
-            </td>
+                <th>
+                    Etudiant
+                </th>
+                <th></th>
+            </tr>
 
-            <td>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mark)
+                    </td>
 
-                @Html.DisplayFor(modelItem => item.SchoolSubject.SubjectName)
+                    <td>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Student.LastName)
-            </td>
-            <td>
-                @Html.ActionLink("Modifier", "Edit", new { id = item.IdMark }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdMark }) |
-                @Html.ActionLink("Supprimer", "Delete", new { id = item.IdMark })
-            </td>
-        </tr>
-        }
+                        @Html.DisplayFor(modelItem => item.SchoolSubject.SubjectName)
 
-    </table>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.LastName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.IdMark }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdMark }) |
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.IdMark })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
 </body>
 </html>

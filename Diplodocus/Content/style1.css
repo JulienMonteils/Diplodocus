@@ -1,10 +1,4 @@
-﻿body {
-    background: url(fondecran.jpg) no-repeat center fixed;
-}
-
-
-
-.btnManager {
+﻿.btnManager {
     background: #f2fafa;
     background-image: -webkit-linear-gradient(top, #f2fafa, #96dc96);
     background-image: -moz-linear-gradient(top, #f2fafa, #96dc96);

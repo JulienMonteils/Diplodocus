@@ -13,8 +13,8 @@
         <div class="container">
             <div class="navbar-header">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Login", "Users", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <a href="@Url.Action("Login", "Users", new { })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/home-32x32.png" style="display:inline-block;padding-left:15px; padding-right:5px" />Accueil</a>
+                    <a href="@Url.Action("Contact", "Users", new { })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/contact-32x32.png" style="display:inline-block;padding-left:15px; padding-right:5px" />Contact</a>
                 </ul>
             </div>
         </div>

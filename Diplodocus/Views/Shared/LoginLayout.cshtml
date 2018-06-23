@@ -17,17 +17,17 @@
                     {
                         if (Session["UserType"].ToString().Contains("Student"))
                         {
-                            @Html.ActionLink("Accueil", "StudentStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                            <a href="@Url.Action("StudentStart", "Start", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/home-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Accueil</a>
                         }
                         else
                         {
                             if (Session["UserType"].ToString().Contains("Manager"))
                             {
-                                @Html.ActionLink("Accueil", "ManagerStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                                <a href="@Url.Action("ManagerStart", "Start", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/home-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Accueil</a>
                             }
                             else
                             {
-                                @Html.ActionLink("Accueil", "TeacherStart", "Start", new { area = "" }, new { @class = "navbar-brand" })
+                                <a href="@Url.Action("TeacherStart", "Start", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/home-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Accueil</a>
                             }
                         }
                     }
@@ -38,26 +38,26 @@
 
                 @if (Session["UserType"].ToString().Contains("Student"))
                 {
-                    <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7"> Bienvenue, @Session["StudentFirstName"] @Session["StudentLastName"]</div>
-                    <a href="@Url.Action("GestionStudent", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Profil<img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                    <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7">@Session["StudentFirstName"] @Session["StudentLastName"]</div>
+                    <a href="@Url.Action("GestionStudent", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Profil</a>
                 }
                 else
                 {
                     if (Session["UserType"].ToString().Contains("Manager"))
                     {
-                        <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7"> Bienvenue, @Session["ManagerFirstName"] @Session["ManagerLastName"]</div>
-                        <a href="@Url.Action("GestionManager", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Profil<img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                        <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7">@Session["ManagerFirstName"] @Session["ManagerLastName"]</div>
+                        <a href="@Url.Action("GestionManager", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Profil</a>
                     }
                     else
                     {
                         if (Session["UserType"].ToString().Contains("Teacher"))
                         {
-                            <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7"> Bienvenue, @Session["TeacherFirstName"] @Session["TeacherLastName"]</div>
-                            <a href="@Url.Action("GestionTeacher", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;">Profil<img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                            <div class="navbar-brand" style="display:inline-block; padding-top:14px; opacity:0.7">@Session["TeacherFirstName"] @Session["TeacherLastName"]</div>
+                            <a href="@Url.Action("GestionTeacher", "Users", new { id = Session["UserId"] })" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/profil-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Profil</a>
                         }
                     }
                 }
-                <a href="@Url.Action("Logout","Users")" class="navbar-brand" style="display:inline-block; padding:10px;">Déconnexion <img src="~/Pictures/off-32x32.png" style="display:inline-block;padding-left:5px" /></a>
+                            <a href="@Url.Action("Logout","Users")" class="navbar-brand" style="display:inline-block; padding:10px;"><img src="~/Pictures/off-32x32.png" style="display:inline-block;padding-left:15px;padding-right:5px" />Déconnexion</a>
             </div>
         </div>
     </div>

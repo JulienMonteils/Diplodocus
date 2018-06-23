@@ -16,82 +16,87 @@
     <title>Création d'une note</title>
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Ajout d'une nouvelle note</h4>
 
-            @{
-                var selectListFloor = new SelectList(new[]
-                               {
-                                  new{ID="1",Name="1"},
-                                  new{ID="2",Name="2"},
-                                  new{ID="3",Name="3"},
-                                  new{ID="4",Name="4"},
-                                  new{ID="5",Name="5"},
-                                  new{ID="6",Name="6"},
-                                  new{ID="7",Name="7"},
-                                  new{ID="8",Name="8"},
-                                  new{ID="9",Name="9"},
-                                  new{ID="10",Name="10"},
-                                  new{ID="11",Name="11"},
-                                  new{ID="12",Name="12"},
-                                  new{ID="13",Name="13"},
-                                  new{ID="14",Name="14"},
-                                  new{ID="15",Name="15"},
-                                  new{ID="16",Name="16"},
-                                  new{ID="17",Name="17"},
-                                  new{ID="18",Name="18"},
-                                  new{ID="19",Name="19"},
-                                  new{ID="20",Name="20"},
-                              },
-                 "ID", "Name", 1);
-            }
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-               <label class="control-label col-md-2">Note </label>
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Mark, selectListFloor, new { @class = "form-control" })
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
 
-                    @Html.ValidationMessageFor(model => model.Mark, "", new { @class = "text-danger" })
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Ajout d'une nouvelle note</h4>
+
+                @{
+                    var selectListFloor = new SelectList(new[]
+                                   {
+                                      new{ID="1",Name="1"},
+                                      new{ID="2",Name="2"},
+                                      new{ID="3",Name="3"},
+                                      new{ID="4",Name="4"},
+                                      new{ID="5",Name="5"},
+                                      new{ID="6",Name="6"},
+                                      new{ID="7",Name="7"},
+                                      new{ID="8",Name="8"},
+                                      new{ID="9",Name="9"},
+                                      new{ID="10",Name="10"},
+                                      new{ID="11",Name="11"},
+                                      new{ID="12",Name="12"},
+                                      new{ID="13",Name="13"},
+                                      new{ID="14",Name="14"},
+                                      new{ID="15",Name="15"},
+                                      new{ID="16",Name="16"},
+                                      new{ID="17",Name="17"},
+                                      new{ID="18",Name="18"},
+                                      new{ID="19",Name="19"},
+                                      new{ID="20",Name="20"},
+                                  },
+                     "ID", "Name", 1);
+                }
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2">Note </label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Mark, selectListFloor, new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.Mark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Etudiant </label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("StudentIdStudent", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Student, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SchoolSubject, "SchoolSubjectIdSchoolSubject", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("SchoolSubjectIdSchoolSubject", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SchoolSubject, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ajouter" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
+        }
 
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Etudiant </label>
-                <div class="col-md-10">
-                    @Html.DropDownList("StudentIdStudent", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Student, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.SchoolSubject, "SchoolSubjectIdSchoolSubject", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("SchoolSubjectIdSchoolSubject", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.SchoolSubject, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-
-
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Ajouter" class="btn btn-default" />
-                </div>
-            </div>
+        <div>
+            @Html.ActionLink("Retour", "Index")
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Retour", "Index")
-    </div>
+        </div>
 </body>
 </html>

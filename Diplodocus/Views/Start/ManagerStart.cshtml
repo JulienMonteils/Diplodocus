@@ -15,36 +15,47 @@
     <title>Manager menu</title>
 </head>
 <body class="imgbackground">
-    <p>
-        <!--
-    Vous etes Manager :
-    <br /><br />
-    ManagerId => @Session["UserId"]
-    <br />
-    ManagerFirstName => @Session["ManagerFirstName"]
-    <br />
-    ManagerLastName => @Session["ManagerLastName"]
-    <br />
-    ManagerPhoneNumber => @Session["ManagerPhoneNumber"]
-    <br />
-    ManagerAddressEmail => @Session["ManagerAddressEmail"]
-    <br />
-    ManagerAddressEmail => @Session["UserType"]
-    <br /><br />
-    Action :
-        -->
-        <br />    <br />    <br />    <br />  <br />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" class="btnManager" value="Gérer les filères" onclick="location.href='@Url.Action("ManageGradeRedirect", "Start")'" />
-                <input type="button" class="btnManager" value="Gérer les matières" onclick="location.href='@Url.Action("ManageSubjectRedirect", "Start")'" /><br />
-                <input type="button" class="btnManager" value="Gérer les étudiants" onclick="location.href='@Url.Action("ManageStudentRedirect", "Start")'" />
-                <input type="button" class="btnManager" value="Gérer les managers" onclick="location.href='@Url.Action("ManageManagerRedirect", "Start")'" /><br />
-                <input type="button" class="btnManager" value="Gérer les enseignants" onclick="location.href='@Url.Action("ManageTeacherRedirect", "Start")'" />
-                <input type="button" class="btnManager" value="Ajouter une note" onclick="location.href='@Url.Action("AddMarkRedirect", "Start")'" />
+    <div class="container" style="margin-top:15%;opacity:0.8">
+        <div class="row">
+            <div class="col-sm-7 col-md-8 col-md-offset-2">
+                <div class="panel panel-default" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                    <div class="panel-heading" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                        Voici votre outils de simulation de notes
+                    </div>
+                    <div class="panel-body" style="color: lawngreen; background-color:white; border:0px solid #262626">
+                        <form role="form" action="#" method="POST">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="center-block">
+                                        <p style="margin-left:15px; font-weight:bold">
+                                            Bonjour à vous, @Session["ManagerFirstName"] @Session["ManagerLastName"],<br />
+                                            Bienvenue sur l'application Diplodocus !
+                                        </p>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-1 col-md-10">
+                                                <input type="button" class="btn btn-lg btn-success btn-block" value="Gérer les filères" onclick="location.href='@Url.Action("ManageGradeRedirect", "Start")'" />
+                                                <input type="button" class="btn btn-lg btn-success btn-block" value="Gérer les matières" onclick="location.href='@Url.Action("ManageSubjectRedirect", "Start")'" /><br />
+                                                <input type="button" class="btn btn-lg btn-success btn-block" value="Gérer les étudiants" onclick="location.href='@Url.Action("ManageStudentRedirect", "Start")'" />
+                                                <input type="button" class="btn btn-lg btn-success btn-block" value="Gérer les managers" onclick="location.href='@Url.Action("ManageManagerRedirect", "Start")'" /><br />
+                                                <input type="button" class="btn btn-lg btn-success btn-block" value="Gérer les enseignants" onclick="location.href='@Url.Action("ManageTeacherRedirect", "Start")'" />
+                                                <input type="button" class="btn btn-lg btn-success btn-block" value="Ajouter une note" onclick="location.href='@Url.Action("AddMarkRedirect", "Start")'" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="panel-footer" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
+                        Bonne Utilisation
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
+
 
 
     </p>
