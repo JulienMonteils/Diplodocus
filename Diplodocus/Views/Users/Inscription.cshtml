@@ -96,10 +96,11 @@
                                                     <span class="input-group-addon" style="color: greenyellow; background-color:#262626; border:0px solid #262626">
                                                         <i><img src="~/Pictures/lock-32x32.png" style="display:inline-block;padding-left:5px" /></i>
                                                     </span>
-                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Mot de passe", style = "background-color:#a5a5a5; border-color:#262626" } })
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Mot de passe", minlenght = "8", style = "background-color:#a5a5a5; border-color:#262626" } })
                                                 </div>
+                                                *Votre de mot de passe doit contenir au moins 8 caractères.
                                             </div>
-
+                                            
                                             <!--MDP2-->
                                             <div class="form-group">
                                                 <div class="input-group">

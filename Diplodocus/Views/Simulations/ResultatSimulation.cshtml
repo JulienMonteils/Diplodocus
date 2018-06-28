@@ -19,12 +19,12 @@
 
     <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
 
-        <h2>ResultatSimulation</h2>
-        <h3>@Model.Student.IdUser - @Model.Student.LastName @Model.Student.FirstName</h3>
-        <h2>Moyenne générale : @Model.Moyenne</h2>
-
-        <h1>Semestre 1</h1>
-        <h3>Moyenne pour semestre 1 est de : @Model.MoyenneS1</h3>
+        <h1 style="text-align:center">Moyenne générale</h1>
+        <h3 style="text-align:center">@Model.Moyenne</h3>
+        <hr />
+        <h1 style="text-align:center" >Semestre 1</h1>
+        <h3 style="text-align:center">@Model.MoyenneS1</h3>
+        <hr />
 
         @if (@Model.MoyenneS1 >= 10)
         {
@@ -88,8 +88,10 @@
                 </tr>
             }
         </table>
-        <h1>Semestre 2</h1>
-        <h3>Moyenne pour semestre 2 est de : @Model.MoyenneS2</h3>
+        <hr />
+        <h1 style="text-align:center">Semestre 2</h1>
+        <h3 style="text-align:center">@Model.MoyenneS2</h3>
+        <hr />
 
         @if (@Model.MoyenneS2 >= 10)
         {
@@ -172,7 +174,8 @@
         }
 
         @Html.ActionLink("Retour à l'index", "RetourHome", new { id = @Model.Student.IdUser }, new { @class = "btn btn-primary" })
-
+        <br />
+        <br />
         </div>
 
 </body>

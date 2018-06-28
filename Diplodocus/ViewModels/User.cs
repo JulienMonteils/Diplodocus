@@ -13,6 +13,7 @@ namespace Diplodocus.ViewModels
         public int UserId { get; set; }
 
         [DisplayName("Email")]
+
         public string Email { get; set; }
 
         [DisplayName("Password")]
@@ -26,8 +27,11 @@ namespace Diplodocus.ViewModels
         [Required(ErrorMessage = "Champs requis")]
         public string ConfirmPassword { get; set; }
 
+
         public string FirstName { get; set; }
+ 
         public string LastName { get; set; }
+
         public string PhoneNumber { get; set; }
         public int GradeIdGrade { get; set; }
         public String LoginErrorMessage { get; set; }

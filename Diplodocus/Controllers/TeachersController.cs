@@ -47,7 +47,7 @@ namespace Diplodocus.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber")] Teacher teacher)
+        public async Task<ActionResult> Create([Bind(Include = "IdUser,FirstName,LastName,Address,PhoneNumber,Password")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {

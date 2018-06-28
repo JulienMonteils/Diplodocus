@@ -21,7 +21,6 @@
     <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
 
         <h2>Resultat des rattrapages</h2>
-        <h3>@Model.Student.IdUser - @Model.Student.LastName @Model.Student.FirstName</h3>
         <h2>Moyenne générale : @Model.Moyenne</h2>
 
         <h1>Semestre 1</h1>
@@ -162,6 +161,8 @@
         }
 
         @Html.ActionLink("Retour à l'index", "RetourHome", new { id = @Model.Student.IdUser }, new { @class = "btn btn-primary" })
+        <br />
+        <br />
 </div>
 </body>
 </html>

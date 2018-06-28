@@ -45,6 +45,8 @@ namespace Diplodocus.Controllers
             ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName");
             return View();
         }
+
+
         public ActionResult ReturnToManagerStart()
         {
 
@@ -59,13 +61,14 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password,GradeIdGrade")] Student student)
         {
+          
             if (ModelState.IsValid)
             {
                 db.Students.Add(student);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName");
             return View(student);
         }
 
@@ -95,6 +98,7 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password,GradeIdGrade")] Student student)
         {
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
             if (ModelState.IsValid)
             {
                 db.Entry(student).State = EntityState.Modified;

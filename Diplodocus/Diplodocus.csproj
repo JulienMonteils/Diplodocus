@@ -246,6 +246,38 @@
     <Compile Include="Migrations\201806212144189_SubjectMarksIntToDouble.Designer.cs">
       <DependentUpon>201806212144189_SubjectMarksIntToDouble.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806251234004_test.cs" />
+    <Compile Include="Migrations\201806251234004_test.Designer.cs">
+      <DependentUpon>201806251234004_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251235071_test2.cs" />
+    <Compile Include="Migrations\201806251235071_test2.Designer.cs">
+      <DependentUpon>201806251235071_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251240332_gererModel.cs" />
+    <Compile Include="Migrations\201806251240332_gererModel.Designer.cs">
+      <DependentUpon>201806251240332_gererModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251245113_ReglageStudent.cs" />
+    <Compile Include="Migrations\201806251245113_ReglageStudent.Designer.cs">
+      <DependentUpon>201806251245113_ReglageStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251257008_merde.cs" />
+    <Compile Include="Migrations\201806251257008_merde.Designer.cs">
+      <DependentUpon>201806251257008_merde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251302023_merde1.cs" />
+    <Compile Include="Migrations\201806251302023_merde1.Designer.cs">
+      <DependentUpon>201806251302023_merde1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251322029_merd2.cs" />
+    <Compile Include="Migrations\201806251322029_merd2.Designer.cs">
+      <DependentUpon>201806251322029_merd2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806251326372_merd3.cs" />
+    <Compile Include="Migrations\201806251326372_merd3.Designer.cs">
+      <DependentUpon>201806251326372_merd3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Manager.cs" />
@@ -467,6 +499,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806212144189_SubjectMarksIntToDouble.resx">
       <DependentUpon>201806212144189_SubjectMarksIntToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251234004_test.resx">
+      <DependentUpon>201806251234004_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251235071_test2.resx">
+      <DependentUpon>201806251235071_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251240332_gererModel.resx">
+      <DependentUpon>201806251240332_gererModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251245113_ReglageStudent.resx">
+      <DependentUpon>201806251245113_ReglageStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251257008_merde.resx">
+      <DependentUpon>201806251257008_merde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251302023_merde1.resx">
+      <DependentUpon>201806251302023_merde1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251322029_merd2.resx">
+      <DependentUpon>201806251322029_merd2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806251326372_merd3.resx">
+      <DependentUpon>201806251326372_merd3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <div class="container"  style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
+    <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
         <br />
         @using (Html.BeginForm("EditStudent", "Users", FormMethod.Post))
         {
@@ -85,77 +85,77 @@
                 </div>
             </div>
         }
+        <!--
+    @using (Html.BeginForm("EditPassword", "Users", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
-        @using (Html.BeginForm("EditPassword", "Users", FormMethod.Post))
-        {
+        <div class="form-horizontal">
+            <br /><br />
+            <h4>Changer votre mot de passe</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdUser)
+            @Html.HiddenFor(model => model.FirstName)
+            @Html.HiddenFor(model => model.LastName)
+            @Html.HiddenFor(model => model.AddressMail)
+            @Html.HiddenFor(model => model.PhoneNumber)
+            @Html.HiddenFor(model => model.GradeIdGrade)
+
+            <div class="form-group">
+                <div class="control-label col-md-2"><strong>Mot de passe actuel</strong></div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2"><strong>Nouveau Mot de passe 1</strong></div>
+                <div class="col-md-10">
+                    <input class="form-control" type="password" name="password1" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2"><strong>Nouveau Mot de passe 2</strong></div>
+                <div class="col-md-10">
+                    <input class="form-control" type="password" name="password2" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Sauvegarder" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    -->
+        <!--
+        <div>
+            @using (Html.BeginForm("EditPassword", "Users", FormMethod.Post)){
             @Html.AntiForgeryToken()
-
             <div class="form-horizontal">
-                <br /><br />
-                <h4>Changer votre mot de passe</h4>
+                <h4>Change password</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.IdUser)
-                @Html.HiddenFor(model => model.FirstName)
-                @Html.HiddenFor(model => model.LastName)
-                @Html.HiddenFor(model => model.AddressMail)
-                @Html.HiddenFor(model => model.PhoneNumber)
-                @Html.HiddenFor(model => model.GradeIdGrade)
-
                 <div class="form-group">
-                    <div class="control-label col-md-2"><strong>Mot de passe actuel</strong></div>
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="control-label col-md-2"><strong>Nouveau Mot de passe 1</strong></div>
-                    <div class="col-md-10">
-                        <input class="form-control" type="password" name="password1" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="control-label col-md-2"><strong>Nouveau Mot de passe 2</strong></div>
-                    <div class="col-md-10">
-                        <input class="form-control" type="password" name="password2" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Sauvegarder" class="btn btn-default" />
-                    </div>
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
-        }
-
-        <!--
-            <div>
-                @using (Html.BeginForm("EditPassword", "Users", FormMethod.Post)){
-                @Html.AntiForgeryToken()
-                <div class="form-horizontal">
-                    <h4>Change password</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.IdUser)
-                    <div class="form-group">
-                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                    </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>
-                </div>
-                }
             </div>
-        -->
+            </div>
+            }
+        </div>
+    -->
     </div>
 </body>
 </html>

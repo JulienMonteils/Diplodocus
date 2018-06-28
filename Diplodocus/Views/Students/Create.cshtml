@@ -65,7 +65,7 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.GradeIdGrade, "GradeIdGrade", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.GradeIdGrade, "Filière", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownList("GradeIdGrade", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.GradeIdGrade, "", new { @class = "text-danger" })

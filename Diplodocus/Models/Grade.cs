@@ -10,6 +10,7 @@
     {
         [Key]
         public int IdGrade { get; set; }
+        [Required]
         public string gradeName { get; set; }
         public virtual ICollection<Student> StudentsList { get; set; }
         public virtual ICollection<SchoolSubject> SchoolSubjectsList { get; set; }

@@ -108,6 +108,7 @@ namespace Diplodocus.Controllers
         {
             using (MyContext db = new MyContext())
             {
+                
                 // CHECK EXIST
                 if (db.Students.Any(x => x.AddressMail == userModel.Email) || db.Teachers.Any(x => x.Address == userModel.Email) || db.Managers.Any(x => x.Address == userModel.Email))
                 {
@@ -130,6 +131,12 @@ namespace Diplodocus.Controllers
                 if (userModel.Password == null || userModel.FirstName == null || userModel.LastName == null || userModel.Email == null || userModel.PhoneNumber == null)
                 {
                     ViewBag.LoginErrorMessage = "problème champs";
+                    return RedirectToAction("Inscription", "Users");
+                }
+
+                if (userModel.Password.Length < 8 || userModel.ConfirmPassword.Length < 8)
+                {
+                    ViewBag.LoginErrorMessage = "problème mdp";
                     return RedirectToAction("Inscription", "Users");
                 }
                 //CHECK PHONENUMBER
@@ -216,6 +223,7 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditStudent([Bind(Include = "IdUser,FirstName,LastName,AddressMail,PhoneNumber,Password,GradeIdGrade")] Student student)
         {
+            ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
             if (ModelState.IsValid)
             {
                 db.Entry(student).State = EntityState.Modified;
@@ -227,7 +235,7 @@ namespace Diplodocus.Controllers
                 Session["StudentPhoneNumber"] = student.PhoneNumber;
                 Session["StudentAddressEmail"] = student.AddressMail;
                 Session["StudentPassword"] = student.Password;
-                ViewBag.GradeIdGrade = new SelectList(db.Grades, "IdGrade", "gradeName", student.GradeIdGrade);
+                
                 Session["GradeId"] = student.GradeIdGrade;
                 return RedirectToAction("StudentStart", "Start");
             }

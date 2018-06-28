@@ -156,6 +156,12 @@ namespace Diplodocus.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SchoolSubject schoolSubject = await db.SchoolSubjects.FindAsync(id);
+
+            foreach(var Marks in schoolSubject.SchoolSubjectMark.ToList())
+            {
+                db.SchoolSubjectMarks.Remove(Marks);
+                await db.SaveChangesAsync();
+            }
             db.SchoolSubjects.Remove(schoolSubject);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

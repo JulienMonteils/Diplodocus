@@ -20,7 +20,7 @@
 <body>
 
     <div class="container" style="background-color:white; border-radius:10px; margin-top:5%; margin-bottom:5%">
-        <h2>SimulerDiplomme pour fillière : @Model.Grade.gradeName</h2>
+        <h2>Simulation Diplome pour fillière : @Model.Grade.gradeName</h2>
         <hr />
         <!-- à mettre dans textboxfor :  m.SchoolSubjectMarks.ElementAt(1).Mark-->
         @using (Html.BeginForm("ResultatSimulation", "Simulations"))
@@ -30,6 +30,8 @@
                 <h2>Semestre 1</h2>
                 @{
                     var i = 0;
+                    var verifS1 = 0;
+                    var verifS2 = 0;
                     foreach (var subject in Model.SchoolSubjects)
                     {
 
@@ -42,7 +44,7 @@
                                     @Html.ValidationMessageFor(m => m.Notes[i])
                                 </div>
                             </div>
-
+                            verifS1 = verifS1 + 1;
                         }
                         i = i + 1;
                     }
@@ -60,6 +62,7 @@
                                     @Html.ValidationMessageFor(m => m.Notes[j])
                                 </div>
                             </div>
+                            verifS2 = verifS2 + 1;
                         }
                         j = j + 1;
                     }
@@ -69,7 +72,14 @@
                 @Html.AntiForgeryToken()
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-primary">Lancer la simulation</button>
+                        @if (verifS1 == 0 || verifS2 == 0)
+                        {
+                            <p>Désolé, simulation impossible. Il n'y a pas encore de matières dans votre filière pour les deux semestres</p>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary">Lancer la simulation</button>
+                        }
                     </div>
                 </div>
             </div>

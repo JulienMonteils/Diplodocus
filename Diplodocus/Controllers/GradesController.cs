@@ -127,7 +127,19 @@ namespace Diplodocus.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+
+            
+
             Grade grade = await db.Grades.FindAsync(id);
+            foreach (var subject in grade.SchoolSubjectsList.ToList())
+            {
+                foreach (var mark in subject.SchoolSubjectMark.ToList())
+                {
+                    db.SchoolSubjectMarks.Remove(mark);
+                    await db.SaveChangesAsync();
+                }
+            }
+            
             db.Grades.Remove(grade);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
